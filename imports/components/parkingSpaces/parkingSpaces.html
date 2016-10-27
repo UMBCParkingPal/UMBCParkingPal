@@ -2,13 +2,14 @@
   <h1>ParkingSpaces List</h1>
 
   <form class="new-space" ng-submit="$ctrl.addSpace($ctrl.newSpace)">
-    <input ng-model="$ctrl.newSpace" type="text" name="text" placeholder="Type to add new tasks"/>
+    <input ng-model="$ctrl.newSpace" type="text" name="text" placeholder="Type to add new space"/>
   </form>
 
 </header>
 
 <ul>
   <li class="spaces" ng-repeat="space in $ctrl.spaces">
+    <button class="delete" ng-click="$ctrl.removeSpace(space)">&times;</button>
     {{space.text}}
   </li>
 </ul>

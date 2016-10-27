@@ -22,7 +22,6 @@ class SpaceListCtrl {
 
   addSpace(newSpace) {
     // Insert a Space into the collection
-
     Spaces.insert({
       text: newSpace,
       createdAt: new Date
@@ -31,6 +30,12 @@ class SpaceListCtrl {
     // Clear form
     this.newSpace = '';
   }
+  removeSpace(space) {
+
+    Spaces.remove(space._id);
+
+  }
+
 }
 
 export default angular.module('spacesList', [
