@@ -3,7 +3,7 @@ body {
     background-color: #315481;
     background-image: linear-gradient(to bottom, #315481, #918e82 100%);
     background-attachment: fixed;
-
+    
     position: absolute;
     top: 0;
     bottom: 0;
@@ -80,8 +80,6 @@ form {
 li {
     position: relative;
     list-style: none;
-    padding: 15px;
-    border-bottom: #eee solid 1px;
 }
 
 li .text {
