@@ -1,0 +1,18 @@
+<body>
+  <div class="container">
+    <header>
+      <h1>Parking Spaces</h1>
+
+      {{> navbar}}
+
+      <form class="new-space">
+        <input type="text" name="text" placeholder="Type to add new spaces" />
+      </form>
+    </header>
+    <ul>
+      {{#each spaces}}
+        {{> space}}
+      {{/each}}
+    </ul>
+  </div>
+</body>
