@@ -1,8 +1,25 @@
 <template name="ParkingSpace">
+  <li>
   <article class="parkingSpace">
-    <button class="delete">&times;</button>
+    <div class="w3-container">
+  <div class="w3-card-4" style="width:50%;">
+    <header class="w3-container w3-blue">
+      <h1>Lot {{lotNum}}</h1>
+    </header>
+
+    <div class="w3-container">
+      <p>{{desc}}</p>
+    </div>
+
+    <footer class="w3-container w3-blue">
+      <h5>{{createdAt}}</h5>
+    </footer>
+  </div>
+</div>
+    <!-- <button class="delete">&times;</button>
     <span class="desc">{{desc}}</span>
     <i class="fa fa-trash"></i>
-    <i class="fa fa-pencil"></i>
+    <i class="fa fa-pencil"></i> -->
   </article>
+</li>
 </template>
