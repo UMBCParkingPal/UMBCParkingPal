@@ -14,7 +14,7 @@ body {
     font-size: 14px;
 }
 
-.content{
+.main-layout{
 	margin: auto;
 	padding-top: 70px;
 	text-align: center;
@@ -28,14 +28,10 @@ body {
     background: white;
 }
 
-header {
-    background: #d2edf4;
-    /*background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);*/
-    padding: 20px 15px 15px 15px;
-    position: relative;
-}
 
-#login-buttons {
+
+#single-login-button {
+    padding-top: 10px
     display: inline;
 }
 
@@ -45,12 +41,6 @@ h1 {
     margin-bottom: 10px;
     display: inline-block;
     margin-right: 1em;
-}
-
-form {
-    margin-top: 10px;
-    margin-bottom: -10px;
-    position: relative;
 }
 
 .new-space input {
