@@ -9,7 +9,7 @@ Template.ParkingSpace.helpers({
 });
 
 Template.ParkingSpace.events({
-	'click .fa-trash': function () {
+	'click .delete': function () {
 		Meteor.call('deleteParkingSpace', this._id);
 	}
 });
