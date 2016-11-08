@@ -26,3 +26,4 @@ aldeed:collection2
 aldeed:autoform
 erasaur:meteor-lodash
 session
+npm-bcrypt
