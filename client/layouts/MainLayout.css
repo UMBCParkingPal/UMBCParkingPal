@@ -101,3 +101,7 @@ header .hide-completed {
         padding-bottom: 5px;
     }
 }
+
+div.tabbed{
+	padding-left: 30px;
+}
