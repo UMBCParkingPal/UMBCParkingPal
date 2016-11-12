@@ -7,9 +7,15 @@ ParkingSpaces = new Mongo.Collection('parkingSpaces');
 // });
 
 ParkingSpaceSchema = new SimpleSchema({
-	name: {
-		type: String,
-		label: "Name"
+	price: {
+		type: Number,
+		label: "Selling Price"
+		min: 1,
+		max: 27
+	},
+	leavingTime: {
+		type: Date,
+		label: "Departure Time"
 	},
 	desc: {
 		type: String,
@@ -17,18 +23,31 @@ ParkingSpaceSchema = new SimpleSchema({
 	},
 	lotNum: {
 		type: Number,
-		label: "Lot Number"
+		label: "Lot Number",
+		min: 1,
+		max: 27
 	},
-	// user: {
-	// 	type: String,
-	// 	label: "User",
-	// 	autoValue: function () {
-	// 		return this.userId
-	// 	},
-	// 	autoform: {
-	// 		type: "hidden"
-	// 	}
-	// },
+	userID: {
+		type: String,
+		label: "User",
+		autoValue: function () {
+			return this.userId
+		},
+		autoform: {
+			type: "hidden"
+		}
+	},
+
+	usersName: {
+		type: String,
+		label: "User",
+		autoValue: function () {
+			return Meteor.user().profile.name
+		},
+		autoform: {
+			type: "hidden"
+		}
+	},
 	createdAt: {
 		type: Date,
 		label: "Created At",
