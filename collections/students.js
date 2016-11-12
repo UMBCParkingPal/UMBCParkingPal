@@ -9,7 +9,7 @@ Students.allow({
 StudentSchema = new SimpleSchema({
 	studentId: {
 		type: Number,
-		label: "ID"
+		label: "ID",
 		autoValue: function () {
 	 		return this.userId
 	 	},
@@ -31,14 +31,14 @@ StudentSchema = new SimpleSchema({
 	},
 	avgRating: {
 		type: Number,
-		label: "Average Rating"
+		label: "Average Rating",
 		autoform: {
 	 		type: "hidden"
 	 	}
 	},
 	totalRatings: {
 		type: Number,
-		label: "Total Ratings"
+		label: "Total Ratings",
 		autoform: {
 	 		type: "hidden"
 	 	}
