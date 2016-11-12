@@ -9,7 +9,7 @@ ParkingSpaces = new Mongo.Collection('parkingSpaces');
 ParkingSpaceSchema = new SimpleSchema({
 	price: {
 		type: Number,
-		label: "Selling Price"
+		label: "Selling Price",
 		min: 1,
 		max: 27
 	},
