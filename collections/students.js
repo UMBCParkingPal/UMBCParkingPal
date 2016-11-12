@@ -1,13 +1,13 @@
-Users = new Mongo.Collection('users');
+Students = new Mongo.Collection('students');
 
-Users.allow({
+Students.allow({
  	insert: function(userId, doc) {
  		return !!userId;
  	}
  });
 
-UserSchema = new SimpleSchema({
-	userId: {
+StudentSchema = new SimpleSchema({
+	studentId: {
 		type: Number,
 		label: "ID"
 		autoValue: function () {
@@ -80,8 +80,8 @@ UserSchema = new SimpleSchema({
 
 Meteor.methods({
 	deleteUser: function(id){
-		Users.remove(id);
+		Students.remove(id);
 	}
 });
 
-Users.attachSchema(UserSchema);
+Students.attachSchema(StudentsSchema);
