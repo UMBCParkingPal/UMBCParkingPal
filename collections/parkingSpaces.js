@@ -7,9 +7,13 @@ ParkingSpaces = new Mongo.Collection('parkingSpaces');
 // });
 
 ParkingSpaceSchema = new SimpleSchema({
-	name: {
-		type: String,
-		label: "Name"
+	price: {
+		type: Number,
+		label: "Selling Price"
+	},
+	leavingTime: {
+		type: Date,
+		label: "Departure Time"
 	},
 	desc: {
 		type: String,
@@ -29,6 +33,7 @@ ParkingSpaceSchema = new SimpleSchema({
 			type: "hidden"
 		}
 	},
+
 	usersName: {
 		type: String,
 		label: "User",
