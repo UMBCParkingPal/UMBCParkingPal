@@ -19,16 +19,26 @@ ParkingSpaceSchema = new SimpleSchema({
 		type: Number,
 		label: "Lot Number"
 	},
-	// user: {
-	// 	type: String,
-	// 	label: "User",
-	// 	autoValue: function () {
-	// 		return this.userId
-	// 	},
-	// 	autoform: {
-	// 		type: "hidden"
-	// 	}
-	// },
+	userID: {
+		type: String,
+		label: "User",
+		autoValue: function () {
+			return this.userId
+		},
+		autoform: {
+			type: "hidden"
+		}
+	},
+	usersName: {
+		type: String,
+		label: "User",
+		autoValue: function () {
+			return Meteor.user().profile.name
+		},
+		autoform: {
+			type: "hidden"
+		}
+	},
 	createdAt: {
 		type: Date,
 		label: "Created At",

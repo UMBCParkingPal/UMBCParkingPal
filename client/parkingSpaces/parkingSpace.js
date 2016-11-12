@@ -5,6 +5,10 @@ Template.ParkingSpace.onCreated(function(){
 Template.ParkingSpace.helpers({
 	editMode: function(){
 		return Template.instance().editMode.get();
+	},
+	canDelete: function(){
+
+		return this.usersName == Meteor.user().profile.name
 	}
 });
 

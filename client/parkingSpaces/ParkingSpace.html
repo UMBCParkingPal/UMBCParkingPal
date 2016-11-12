@@ -1,10 +1,13 @@
 <template name="ParkingSpace">
-  <li>
+  <div class="col-md-1">
   <article class="parkingSpace">
     <div class="w3-container">
   <div class="w3-card-4" style="width:25%;">
     <header class="w3-container w3-blue">
-      <h1>Lot {{lotNum}}</h1>     <button class="delete">&times;</button>
+      <h1>Lot {{lotNum}}</h1>
+      {{#if canDelete}}
+      <button class="delete">&times;</button>
+      {{/if}}
     </header>
 
     <div class="w3-container">
@@ -13,6 +16,8 @@
 
     <footer class="w3-container w3-blue">
       <h5>{{createdAt}}</h5>
+      <br>
+      {{usersName}}
     </footer>
   </div>
 </div>
@@ -21,5 +26,5 @@
     <i class="fa fa-trash"></i>
     <i class="fa fa-pencil"></i> -->
   </article>
-</li>
+</div>
 </template>
