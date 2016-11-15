@@ -1,5 +1,12 @@
 <template name="NewParkingSpace">
+	
+	<div class="page-header">
+		<center><h1>Post a Listing</h1></center>
+	</div>
+	
 	<div class="new-parkingSpace-container">
+		<img src="map.jpg" width="600" height="400"><p><br></p>
+		
 		{{> quickForm collection="ParkingSpaces" id="insertParkingSpaceForm" type="insert" class="new-parkingSpace-form"}}
 	</div>
 </template>

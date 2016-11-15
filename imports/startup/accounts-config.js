@@ -1,7 +1,12 @@
 import { Accounts } from 'meteor/accounts-base';
 
-// Accounts.config({ restrictCreationByEmailDomain: 'umbc.edu' })
 
-Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_ONLY',
-});
+// Accounts.ui.config({
+
+// requestOfflineToken : {
+//   google: true
+// },
+// requestPermissions: {
+//   google: ['profile']
+// }
+// });
