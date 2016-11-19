@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 Meteor.startup(function () {
-
     Accounts.loginServiceConfiguration.remove({service: "google"});
 
     Accounts.loginServiceConfiguration.insert({

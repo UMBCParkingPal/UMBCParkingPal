@@ -3,7 +3,7 @@ Template.Register.events({
     event.preventDefault();
 
     if(event.target.phone.value){
-      Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.phone' : event.target.phone.value}})
+      Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.phonenumber' : event.target.phone.value}})
     }
 
     if(event.target.make.value){
