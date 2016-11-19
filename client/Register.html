@@ -1,4 +1,5 @@
 <template name="Register">
+	<form>
 	<div class="container">
 		<div class="page-header">
 			<h1 style="margin-top:70px" align=center >Register an Account</h1>
@@ -8,13 +9,13 @@
 		<div class="form-group row">
 			<label for="email-input" class="col-xs-2 col-form-label">Email</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="email" value="email@umbc.edu" id="email-input" disabled>
+				<input class="form-control" type="email" value="email@umbc.edu" name="email-input" disabled>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="phone-input" class="col-xs-2 col-form-label">Phone Number</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="tel" value="" id="phone-input">
+				<input class="form-control" type="tel" value="" name="phone">
 			</div>
 		</div>
 		<div class="form-group row">
@@ -39,33 +40,30 @@
 		<div class="form-group row">
 			<label for="make-input" class="col-xs-2 col-form-label">Make</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="text" value="" id="make-input">
+				<input class="form-control" type="text" value="" name="make" id="make-input">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="model-input" class="col-xs-2 col-form-label">Model</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="text" value="" id="model-input">
+				<input class="form-control" type="text" value="" name="model" id="model-input">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="color-input" class="col-xs-2 col-form-label">Color</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="text" value="" id="color-input">
+				<input class="form-control" type="text" value="" name="color" id="color-input">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="plate-input" class="col-xs-2 col-form-label">License Plate</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="text" value="" id="plate-input">
+				<input class="form-control" type="text" value="" name="plate" id="plate-input">
 			</div>
 		</div>
 
 		<button type="submit" class="btn btn-success">Register</button>
-		<button type="submit" class="btn btn-default">Cancel</button>
+		<button type="cancel" class="btn btn-default">Cancel</button>
 	</div>
-
-  <div class="container" ng-app="simple-spaces" style="margin-top:50px">
-    <spaces-list></spaces-list>
-  </div>
+	</form>
 </template>
