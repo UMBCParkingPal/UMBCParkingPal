@@ -11,7 +11,7 @@ ParkingSpaceSchema = new SimpleSchema({
 		type: Number,
 		label: "Selling Price",
 		min: 1,
-		max: 27
+		max: 5
 	},
 	leavingTime: {
 		type: Date,
@@ -25,7 +25,7 @@ ParkingSpaceSchema = new SimpleSchema({
 		type: Number,
 		label: "Lot Number",
 		min: 1,
-		max: 27
+		max: 29
 	},
 	userID: {
 		type: String,
