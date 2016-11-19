@@ -13,15 +13,34 @@ ParkingSpaceSchema = new SimpleSchema({
 		min: 1,
 		max: 5
 	},
-	leavingTime: {
-		type: String,
-		label: "Departure Time",
+    time: {
+        type: Object
+    },
+    'time.hour': {
+        type: Number,
+		label: "Hour",
+        min: 1,
+        max:12
+    },
+    'time.minute': {
+        type: Number,
+		label: "Minute",
+        min: 0,
+        max: 59
+    },
+    'time.ampm': {
+        type: String,
+		label: "AM/PM",
         autoform: {
-            afQuickField: {
-                type: "time"
+            type: "select",
+            options: function() {
+                return [
+                    {label: "AM", value: "AM"},
+                    {label: "PM", value: "PM"}
+                ];
             }
-	 	}
-	},
+        }
+    },
 	lotNum: {
 		type: Number,
 		label: "Lot Number",
