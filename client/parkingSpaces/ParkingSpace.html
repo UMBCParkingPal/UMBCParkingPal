@@ -1,21 +1,19 @@
 <template name="ParkingSpace">
-  <div class="col-md-1">
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <div class="col-md-6">
   <article class="parkingSpace">
-    <div class="w3-container">
-  <div class="w3-card-4" style="width:25%;">
+    <div class="w3-container" style="padding-bottom:10px">
+  <div class="w3-card-4">
     <header class="w3-container w3-blue">
       <h1>Lot {{lotNum}}</h1>
-      {{#if canDelete}}
-      <button class="delete">&times;</button>
-      {{/if}}
     </header>
 
     <div class="w3-container">
-      <p>{{desc}}</p>
+      <p>${{price}}</p>
     </div>
 
     <footer class="w3-container w3-blue">
-      <h5>{{createdAt}}</h5>
+      <h5>{{leavingTime}}</h5>
       <br>
       {{usersName}}
       <button class="buy">Buy</button>
