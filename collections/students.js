@@ -66,6 +66,14 @@ Students.schema = new SimpleSchema({
 		type: String,
 		label: "License Plate Number"
 	},
+    //active listing/purchase (can ony have one)
+    activeListing: {
+        type: String,
+        label: "Active Listing",
+        autoform: {
+			type: "hidden"
+		}
+    },
 	createdAt: {
 		type: Date,
 		label: "Created At",
