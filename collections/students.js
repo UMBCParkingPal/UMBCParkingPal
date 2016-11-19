@@ -22,11 +22,11 @@ Students.schema = new SimpleSchema({
 		label: "Name"
 	},
 	email: {
-		type: String,
+		type: email,
 		label: "Email"
 	},
 	phone: {
-		type: String,
+		type: tel,
 		label: "Phone"
 	},
 	avgRating: {

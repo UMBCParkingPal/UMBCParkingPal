@@ -14,7 +14,7 @@ ParkingSpaceSchema = new SimpleSchema({
 		max: 5
 	},
 	leavingTime: {
-		type: Date,
+		type: time,
 		label: "Departure Time"
 	},
 	desc: {
