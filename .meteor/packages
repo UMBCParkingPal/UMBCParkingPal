@@ -28,3 +28,5 @@ erasaur:meteor-lodash
 session
 npm-bcrypt
 service-configuration
+twbs:bootstrap
+peppelg:bootstrap-3-modal
