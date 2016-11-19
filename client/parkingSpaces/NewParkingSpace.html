@@ -6,9 +6,18 @@
 	
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-9"><img src="map.jpg" width="600" height="400"></div>
+            <div class="col-lg-9"><img src="map.jpg" width="750" height="500"></div>
             <div class="col-lg-3">
-                {{> quickForm collection="ParkingSpaces" id="insertParkingSpaceForm" type="insert" class="new-parkingSpace-form"}}
+                
+                {{> quickForm  collection="ParkingSpaces" id="insertParkingSpaceForm"  class="new-parkingSpace-form" type="insert"}}
+                <!--
+                {{#autoForm collection="ParkingSpaces" id="insertParkingSpaceForm" }}
+                  {{> afFormGroup name="leavingTime" type="time" }}
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                {{/autoForm}}-->
+                
             </div>
         </div>
 	</div>

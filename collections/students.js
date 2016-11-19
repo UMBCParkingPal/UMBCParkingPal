@@ -22,12 +22,22 @@ Students.schema = new SimpleSchema({
 		label: "Name"
 	},
 	email: {
-		type: email,
-		label: "Email"
+		type: String,
+		label: "Email",
+        autoform: {
+            afFieldInput: {
+                type: "email"
+            }
+	 	}
 	},
 	phone: {
-		type: tel,
-		label: "Phone"
+		type: Number,
+		label: "Phone",
+        autoform: {
+            afFieldInput: {
+                type: "tel"
+            }
+	 	}
 	},
 	avgRating: {
 		type: Number,
