@@ -1,18 +1,15 @@
-<template name="NewParkingSpace">
-	
+<template name="SellParkingSpace">
 	<div class="page-header">
 		<center><h1>Post a Listing</h1></center>
 	</div>
-	
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9"><img src="map.jpg" width="750" height="500"></div>
             <div class="col-lg-3">
-                
                 {{> quickForm  collection="ParkingSpaces" id="insertParkingSpaceForm"  class="new-parkingSpace-form" type="insert"}}
-                
             </div>
         </div>
 	</div>
-    
+
 </template>
