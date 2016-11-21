@@ -7,7 +7,7 @@ Template.ParkingSpaces.onCreated(function(){
 
 Template.ParkingSpaces.helpers({
 	parkingSpaces: ()=> {
-		console.log("out of folder");
+		console.log("Hey");
 		return ParkingSpaces.find({});
 	}
 });
@@ -16,7 +16,6 @@ Template.myParkingSpaces.helpers({
 	myParkingSpaces: ()=>{
 		var thisId = Meteor.userId();
 		if (thisId) {
-			console.log(ParkingSpaces);
 			return ParkingSpaces.find({userID: thisId});
 		};
 	}

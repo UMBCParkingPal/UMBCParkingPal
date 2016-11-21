@@ -1,11 +1,5 @@
 ParkingSpaces = new Mongo.Collection('parkingSpaces');
 
-// ParkingSpaces.allow({
-// 	insert: function(userId, doc) {
-// 		return !!userId;
-// 	}
-// });
-
 ParkingSpaceSchema = new SimpleSchema({
 	price: {
 		type: Number,
@@ -79,7 +73,7 @@ ParkingSpaceSchema = new SimpleSchema({
                     {label: "29", value: 29}
                 ];
             }
-		}     
+		}
 	},
     desc: {
         type: String,
