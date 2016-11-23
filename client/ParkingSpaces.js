@@ -1,19 +1,13 @@
-Template.ParkingSpaces.onCreated(function(){
-	var self = this;
-	self.autorun(function() {
-		self.subscribe('parkingSpaces');
-	});
-});
+Meteor.subscribe('parkingSpaces');
 
 Template.ParkingSpaces.helpers({
 	parkingSpaces: ()=> {
-		console.log("Hey");
 		return ParkingSpaces.find({});
 	}
 });
 
 Template.myParkingSpaces.helpers({
-	myParkingSpaces: ()=>{
+	myParkingSpaces: ()=> {
 		var thisId = Meteor.userId();
 		if (thisId) {
 			return ParkingSpaces.find({userID: thisId});
