@@ -15,6 +15,12 @@ Template.myParkingSpaces.helpers({
 	}
 })
 
+Template.ParkingSpaces.helpers({
+	filteredParkingSpaces: (lotNum,price)=>{
+		return ParkingSpaces.find({});
+	}
+})
+
 Template.ParkingSpace.onCreated(function(){
 	this.editMode = new ReactiveVar(false);
 });
