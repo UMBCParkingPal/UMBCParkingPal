@@ -4,7 +4,6 @@
 		<div class="page-header">
 			<h1 style="margin-top:70px" align=center >Register an Account</h1>
 		</div>
-
 		<h2>Driver Information</h2>
 		<div class="form-group row">
 			<label for="email-input" class="col-xs-2 col-form-label">Email</label>
@@ -25,7 +24,7 @@
 				Permit Type
 				<span class="caret"></span>
 			</button>
-			<ul class="dropdown-menu" style="left:180px" aria-labelledby="dropdownMenu1">
+			<ul class="dropdown-menu" style="left:450px" aria-labelledby="dropdownMenu1" name="permit">
 				<li><a href="#">A</a></li>
 				<li><a href="#">B</a></li>
 				<li><a href="#">C</a></li>
@@ -33,7 +32,12 @@
 				<li><a href="#">E</a></li>
 			</ul>
 			</div>
-
+	<script>
+	 	$(".dropdown-menu li a").click(function(){
+  			$(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+  			$(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+		});
+	</script>
 		</div>
 
 		<h2>Vehicle Information</h2>
@@ -63,7 +67,7 @@
 		</div>
 
 		<button type="submit" class="btn btn-success">Register</button>
-		<button type="cancel" class="btn btn-default">Cancel</button>
+		<a type="submit" class="btn btn-default" href="/">Cancel</a>
 	</div>
 	</form>
 </template>
