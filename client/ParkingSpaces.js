@@ -1,13 +1,15 @@
 Meteor.subscribe('parkingSpaces');
+Meteor.subscribe("users");
+
 
 Template.ParkingSpaces.helpers({
-	parkingSpaces: ()=> {
+	ParkingSpaces: ()=> {
 		return ParkingSpaces.find({});
 	}
 });
 
-Template.myParkingSpaces.helpers({
-	myParkingSpaces: ()=> {
+Template.MyParkingSpaces.helpers({
+	MyParkingSpaces: ()=> {
 		var thisId = Meteor.userId();
 		if (thisId) {
 			return ParkingSpaces.find({userID: thisId});
@@ -16,7 +18,7 @@ Template.myParkingSpaces.helpers({
 })
 
 Template.ParkingSpaces.helpers({
-	filteredParkingSpaces: (lotNum,price)=>{
+	FilteredParkingSpaces: (lotNum,price)=>{
 		return ParkingSpaces.find({});
 	}
 })
@@ -41,9 +43,10 @@ Template.ParkingSpace.helpers({
 	}
 });
 
-Template.ParkingSpace.events({
+Template.MyParkingSpaces.events({
 	'click .delete': function () {
 		Meteor.call('deleteParkingSpace', this._id);
+		Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' :0}})
 	},
 	'click .buy': function(){
 		Session.set('ParkingSpace',this)

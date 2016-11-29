@@ -14,6 +14,16 @@ body {
     font-size: 14px;
 }
 
+.login-text-and-button {
+  display: inline;
+  padding-top: 12px
+}
+
+
+.login-display-name {
+  color: white;
+}
+
 .main-layout{
 	margin: auto;
 	text-align: center;
