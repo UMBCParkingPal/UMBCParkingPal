@@ -47,8 +47,7 @@ Template.ParkingSpace.events({
 	},
 	'click .buy': function(){
 		Session.set('ParkingSpace',this)
-		console.log(this);
-		Modal.show('exampleModal', function (){
+		Modal.show('confirmation', function (){
 			return this
 		})
 	}
