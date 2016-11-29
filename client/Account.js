@@ -4,8 +4,8 @@ Template.Register.events({
   'submit form': function(){
     event.preventDefault();
 
-    if(event.target.phone.value){
-      Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.phonenumber' : event.target.phone.value}})
+    if(event.target.phonenumber.value){
+      Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.phonenumber' : event.target.phonenumber.value}})
     }
 
     if(event.target.make.value){
@@ -26,46 +26,55 @@ Template.Register.events({
   }
 })
 
+Template.Register.helpers({
+  email: ()=>{
+   var user = Meteor.user();
+   if (user) {
+     return user.profile.email
+   }
+ }
+})
+
 Template.Account.helpers({
    email: ()=>{
     var user = Meteor.user();
     if (user) {
-      console.log(user)
       return user.profile.email
     }
   },
    phonenumber: ()=>{
     var user = Meteor.user();
     if (user) {
-      console.log(user)
       return user.profile.phonenumber
     }
   },
    make: ()=>{
     var user = Meteor.user();
     if (user) {
-      console.log(user)
       return user.profile.make
     }
   },
+  permit: ()=>{
+   var user = Meteor.user();
+   if (user) {
+     return user.profile.permit
+   }
+ },
    model: ()=>{
     var user = Meteor.user();
     if (user) {
-      console.log(user)
       return user.profile.model
     }
   },
    color: ()=>{
     var user = Meteor.user();
     if (user) {
-      console.log(user)
       return user.profile.color
     }
   },
    plate: ()=>{
     var user = Meteor.user();
     if (user) {
-      console.log(user)
       return user.profile.plate
     }
    }
@@ -75,8 +84,14 @@ Template.Account.events({
   'submit form': function(){
     event.preventDefault();
 
-    if(event.target.phone.value){
-      Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.phonenumber' : event.target.phone.value}})
+    console.log(event.target.permit.value);
+
+    if(event.target.phonenumber.value){
+      Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.phonenumber' : event.target.phonenumber.value}})
+    }
+
+    if(event.target.permit.value){
+      Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.permit' : event.target.permit.value}})
     }
 
     if(event.target.make.value){

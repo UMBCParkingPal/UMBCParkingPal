@@ -1,73 +1,62 @@
-<template name="Register">
+<template name ="Register">
 	<form>
 	<div class="container">
 		<div class="page-header">
-			<h1 style="margin-top:70px" align=center >Register an Account</h1>
+			<h1 align=center>Register Account</h1>
 		</div>
 		<h2>Driver Information</h2>
 		<div class="form-group row">
 			<label for="email-input" class="col-xs-2 col-form-label">Email</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="email" value="email@umbc.edu" name="email-input" disabled>
+				<input class="form-control" name="email" type="email" value="{{email}}" id="email-input" disabled>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="phone-input" class="col-xs-2 col-form-label">Phone Number</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="tel" value="" name="phone">
+				<input class="form-control" name="phonenumber" type="tel" placeholder="301-555-5555" id="phonenumber-input">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="permit-input" class="col-xs-2 col-form-label">Permit Type</label>
-			<div class="dropdown" style="left: 15px">
-			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				Permit Type
-				<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" style="left:450px" aria-labelledby="dropdownMenu1" name="permit">
-				<li><a href="#">A</a></li>
-				<li><a href="#">B</a></li>
-				<li><a href="#">C</a></li>
-				<li><a href="#">D</a></li>
-				<li><a href="#">E</a></li>
-			</ul>
-			</div>
-	<script>
-	 	$(".dropdown-menu li a").click(function(){
-  			$(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
-  			$(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-		});
-	</script>
+			<select name="permit">
+				 <option value = "A">A</option>
+				 <option value = "B">B</option>
+				 <option value = "C">C</option>
+				 <option value = "D">D</option>
+				 <option value = "E">E</option>
+			</select>
 		</div>
-
+    <br>
 		<h2>Vehicle Information</h2>
 		<div class="form-group row">
 			<label for="make-input" class="col-xs-2 col-form-label">Make</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="text" value="" name="make" id="make-input">
+				<input name="make" class="form-control" type="text" placeholder="Honda" id="make-input">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="model-input" class="col-xs-2 col-form-label">Model</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="text" value="" name="model" id="model-input">
+				<input name="model" class="form-control" type="text" placeholder="Civic" id="model-input">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="color-input" class="col-xs-2 col-form-label">Color</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="text" value="" name="color" id="color-input">
+				<input name="color" class="form-control" type="text" placeholder="Grey" id="color-input">
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="plate-input" class="col-xs-2 col-form-label">License Plate</label>
 			<div class="col-xs-10">
-				<input class="form-control" type="text" value="" name="plate" id="plate-input">
+				<input name="plate" class="form-control" type="text" placeholder="ABCD123" id="plate-input">
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-success">Register</button>
+		<button type="submit" class="btn btn-success">Submit</button>
 		<a type="submit" class="btn btn-default" href="/">Cancel</a>
-	</div>
-	</form>
+ </div>
+
+</form>
 </template>

@@ -5,7 +5,7 @@ Students.allow({
  		return !!userId;
  	}
  });
- 
+
 Students.schema = new SimpleSchema({
 	studentId: {
 		type: Number,
@@ -30,7 +30,7 @@ Students.schema = new SimpleSchema({
             }
 	 	}
 	},
-	phone: {
+	phonenumber: {
 		type: Number,
 		label: "Phone",
         autoform: {
@@ -53,7 +53,7 @@ Students.schema = new SimpleSchema({
 	 		type: "hidden"
 	 	}
 	},
-	
+
 	//Car info
 	permit: {
 		type: String,
@@ -101,4 +101,3 @@ Meteor.methods({
 		Students.remove(id);
 	}
 });
-
