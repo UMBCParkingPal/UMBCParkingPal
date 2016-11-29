@@ -1,8 +1,18 @@
 Meteor.subscribe("users");
 
+Template.SellParkingSpace.helpers({
+  'updateUserProfile': ()=>{
+    Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 1}})
+    console.log("Hit");
+  }
+})
+
 Template.Register.events({
   'submit form': function(){
     event.preventDefault();
+
+    Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
+
 
     if(event.target.phonenumber.value){
       Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.phonenumber' : event.target.phonenumber.value}})
