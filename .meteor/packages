@@ -30,3 +30,4 @@ npm-bcrypt
 service-configuration
 twbs:bootstrap
 peppelg:bootstrap-3-modal
+arillo:flow-router-helpers

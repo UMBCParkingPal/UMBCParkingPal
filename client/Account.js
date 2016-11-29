@@ -3,7 +3,6 @@ Meteor.subscribe("users");
 Template.SellParkingSpace.helpers({
   'updateUserProfile': ()=>{
     Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 1}})
-    console.log("Flag: 1");
   }
 })
 

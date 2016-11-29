@@ -6,9 +6,12 @@ Accounts.onCreateUser((options, user) => {
   return user
 });
 
-Accounts.onLogin(() => {
-  if (Meteor.isClient) {
-    console.log("Yo");
-    FlowRouter.go("/Account");
-  }
-});
+
+// Accounts.onLogout(function() {
+//   console.log("LogOut");
+// 	// FlowRouter.go()
+// });
+//
+// Accounts.onLogin(function() {
+//   console.log("Go");
+// });

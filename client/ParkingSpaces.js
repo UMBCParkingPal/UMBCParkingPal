@@ -1,7 +1,6 @@
 Meteor.subscribe('parkingSpaces');
 Meteor.subscribe("users");
 
-
 Template.ParkingSpaces.helpers({
 	ParkingSpaces: ()=> {
 		return ParkingSpaces.find({});
@@ -46,7 +45,7 @@ Template.ParkingSpace.helpers({
 Template.MyParkingSpaces.events({
 	'click .delete': function () {
 		Meteor.call('deleteParkingSpace', this._id);
-		Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' :0}})
+		Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
 	},
 	'click .buy': function(){
 		Session.set('ParkingSpace',this)
