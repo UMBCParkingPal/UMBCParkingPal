@@ -14,7 +14,7 @@
 		<div class="form-group row">
 			<label for="phone-input" class="col-xs-2 col-form-label">Phone Number</label>
 			<div class="col-xs-10">
-				<input class="form-control" name="phonenumber" type="tel" value="{{phonenumber}}" id="phonenumber-input">
+				<input class="form-control" name="phonenumber" type="tel" value="{{phonenumber}}" id="phonenumber-input" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Please enter your phone number in the format 555-555-5555" required>
 			</div>
 		</div>
 		<div class="form-group row">
@@ -33,19 +33,19 @@
 		<div class="form-group row">
 			<label for="make-input" class="col-xs-2 col-form-label">Make</label>
 			<div class="col-xs-10">
-				<input name="make" class="form-control" type="text" value="{{make}}" id="make-input">
+				<input name="make" class="form-control" type="text" value="{{make}}" id="make-input" oninvalid="this.setCustomValidity('Please enter your car make')" onchange="this.setCustomValidity('')" required>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="model-input" class="col-xs-2 col-form-label">Model</label>
 			<div class="col-xs-10">
-				<input name="model" class="form-control" type="text" value="{{model}}" id="model-input">
+				<input name="model" class="form-control" type="text" value="{{model}}" id="model-input" oninvalid="this.setCustomValidity('Please enter your car model')" onchange="this.setCustomValidity('')" required>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="color-input" class="col-xs-2 col-form-label">Color</label>
 			<div class="col-xs-10">
-				<input name="color" class="form-control" type="text" value="{{color}}" id="color-input">
+				<input name="color" class="form-control" type="text" value="{{color}}" id="color-input" oninvalid="this.setCustomValidity('Please enter your car color')" onchange="this.setCustomValidity('')" required>
 			</div>
 		</div>
 		<div class="form-group row">
