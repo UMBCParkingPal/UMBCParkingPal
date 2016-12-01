@@ -1,6 +1,12 @@
 Meteor.subscribe("users");
 Meteor.subscribe('parkingSpaces');
 
+Template.saleFinal.events({
+  'click :button': function(event,template){
+    var element = template.find('input:radio[name=rating]:checked');
+    console.log($(element).val());
+  }
+})
 
 Template.SellParkingSpace.helpers({
   'canSellSpace': ()=>{

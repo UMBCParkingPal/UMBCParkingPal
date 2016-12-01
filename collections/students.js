@@ -53,7 +53,6 @@ Students.schema = new SimpleSchema({
 	 		type: "hidden"
 	 	}
 	},
-
 	//Car info
 	permit: {
 		type: String,
