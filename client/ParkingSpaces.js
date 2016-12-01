@@ -7,6 +7,13 @@ Template.ParkingSpaces.helpers({
 	}
 });
 
+AutoForm.addHooks(['insertParkingSpaceForm'], {
+  onSuccess: function(operation, result, template) {
+    FlowRouter.go("/");
+		Modal.show('sellConfirmation')
+  }
+});
+
 Template.MyParkingSpaces.helpers({
 	MyParkingSpaces: ()=> {
 		var thisId = Meteor.userId();

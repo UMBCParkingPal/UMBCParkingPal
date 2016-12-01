@@ -7,6 +7,8 @@ Accounts.onCreateUser((options, user) => {
 });
 
 
+
+
 // Accounts.onLogout(function() {
 //   console.log("LogOut");
 // 	// FlowRouter.go()
