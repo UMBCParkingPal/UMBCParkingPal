@@ -1,10 +1,10 @@
-// Meteor.subscribe("users");
-
 Template.MainLayout.helpers({
 	didRegister: ()=> {
-	   if(Meteor.user().profile.phonenumber){
+		var u = Meteor.user().profile
+	   if(u.phonenumber && u.permit && u.make && u.model && u.color && u.plate){
        return true
      }
+		 console.log(u);
      return false
 	}
 });

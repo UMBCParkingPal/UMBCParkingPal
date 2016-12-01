@@ -12,6 +12,9 @@ Template.Register.events({
 
     Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
 
+    if(event.target.phonenumber.value){
+      Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.permit' : event.target.permit.value}})
+    }
 
     if(event.target.phonenumber.value){
       Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.phonenumber' : event.target.phonenumber.value}})
