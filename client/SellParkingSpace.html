@@ -2,15 +2,17 @@
 	<div class="page-header">
 		<center><h1>Post a Listing</h1></center>
 	</div>
-
+		{{#if canSellSpace}}
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9"><img src="map.jpg" width="750" height="500"></div>
             <div class="col-lg-3">
                 {{> quickForm  collection="ParkingSpaces" id="insertParkingSpaceForm"  class="new-parkingSpace-form" type="insert"}}
-								{{updateUserProfile}}
 						</div>
         </div>
 	</div>
+	{{else}}
+	<p>You already have a listing active. If you want to list another spot please delete the other one</p>
+	{{/if}}
 
 </template>

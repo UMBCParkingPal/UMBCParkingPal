@@ -46,6 +46,7 @@ Template.MyParkingSpaces.events({
 	'click .delete': function () {
 		Meteor.call('deleteParkingSpace', this._id);
 		Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
+		console.log("Deleted");
 	},
 	'click .buy': function(){
 		Session.set('ParkingSpace',this)

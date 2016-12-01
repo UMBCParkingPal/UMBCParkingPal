@@ -1,16 +1,20 @@
 Meteor.subscribe("users");
+Meteor.subscribe('parkingSpaces');
+
 
 Template.SellParkingSpace.helpers({
-  'updateUserProfile': ()=>{
-    Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 1}})
+  'canSellSpace': ()=>{
+    var thisId = Meteor.userId();
+    if (ParkingSpaces.find({userID: thisId}).fetch().length == 0){
+      return true
+    }
+    return false
   }
 })
 
 Template.Register.events({
   'submit form': function(){
     event.preventDefault();
-
-    Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
 
     if(event.target.phonenumber.value){
       Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.permit' : event.target.permit.value}})
