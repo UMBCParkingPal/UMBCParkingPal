@@ -56,6 +56,15 @@ h4, h5 {
    text-align:left;
 }
 
+h4-splash {
+    display: block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
 .new-space input {
     box-sizing: border-box;
     padding: 10px 0;
