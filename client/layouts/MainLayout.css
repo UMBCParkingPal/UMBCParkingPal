@@ -52,6 +52,10 @@ h1 {
     margin-right: 1em;
 }
 
+h4, h5 {
+   text-align:left;
+}
+
 .new-space input {
     box-sizing: border-box;
     padding: 10px 0;
