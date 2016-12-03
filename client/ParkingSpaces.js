@@ -12,7 +12,7 @@ Template.MyParkingSpaces.helpers({
 	MyParkingSpaces: ()=> {
 		var thisId = Meteor.userId();
 		if (thisId) {
-			return ParkingSpaces.find({sellerID: thisId},{isBought: false});
+			return ParkingSpaces.find({userID: thisId},{isBought: false});
 		};
 	}
 })
