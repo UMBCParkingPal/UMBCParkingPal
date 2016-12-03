@@ -4,34 +4,7 @@
 		<center><h1>Homepage</h1></center>
 	</div>
 
-	{{#with parkingSpace}}
-		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-	  <div class="col-md-6 col-md-offset-3">
-	  <article class="parkingSpace">
-	    <div class="w3-container" style="padding-bottom:10px">
-	  <div class="w3-card-4">
-	    <header class="w3-container w3-blue">
-	      <h1>Lot {{lotNum}}</h1>
-		    <button class="delete">&times;</button>
-	    </header>
+	<center>{{>MyParkingSpaces}}</center>
 
-	    <div class="w3-container">
-	      <p>${{price}}</p>
-	    </div>
-
-	    <footer class="w3-container w3-blue">
-	      <h5>{{leavingTime}}</h5>
-	      <br>
-	      {{usersName}}
-	    </footer>
-	  </div>
-	</div>
-	  </article>
-	</div>
-
-	{{else}}
-	  <div>You have no active listings or purchases.</div>
-	{{/with}}
-		
-
+	
 </template>
