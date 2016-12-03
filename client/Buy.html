@@ -5,16 +5,11 @@
 </div>
 
 <div class="container-fluid">
-
 <img src="map.jpg" width="750" height="500">
+</div>
 
-<div style="float:right">
-<br>
-<a href="/Search">Back to Map</a><br>
-<a href="/Listings">Show All Listings</a>
-</div>
-</div>
 <br/>
+
 <div class="container">
 <div class="row">
 <div class="control-group" style="float:left">
@@ -135,10 +130,14 @@
 	</div>
 </div>
 </div>
-<br/><br/>
-
-{{#each FilteredParkingSpaces}}
-    {{>ParkingSpace}}
-{{/each}}
+<br/>
+{{#with FilteredParkingSpaces}}
+	{{#each FilteredParkingSpaces}}
+	    {{>ParkingSpace}}
+	{{/each}}
+{{else}}
+	No parking spaces match your selections.
+	<br><br>
+{{/with}}
 
 </template>

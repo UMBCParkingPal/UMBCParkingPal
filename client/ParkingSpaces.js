@@ -15,16 +15,6 @@ AutoForm.addHooks(['insertParkingSpaceForm'], {
 });
 
 
-
-Template.MyParkingSpaces.helpers({
-	MyParkingSpaces: ()=> {
-		var thisId = Meteor.userId();
-		if (thisId) {
-			return ParkingSpaces.find({userID: thisId});
-		};
-	}
-})
-
 Template.Buy.helpers({
 	FilteredParkingSpaces: ()=>{
 		return ParkingSpaces.find({});
@@ -83,31 +73,3 @@ Template.ParkingSpace.helpers({
 	}
 });
 
-Template.MyParkingSpaces.events({
-	'click .delete': function () {
-
-    new Confirmation({
-      message: "Are you sure ?",
-      title: "Confirmation",
-      cancelText: "Cancel",
-      okText: "Ok",
-      success: true, // whether the button should be green or red
-      focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
-    }, function (ok) {
-      if(ok){
-        Meteor.call('deleteParkingSpace', this._id);
-        Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
-        console.log("Deleted");
-      }
-    });
-
-
-
-	},
-	'click .buy': function(){
-		Session.set('ParkingSpace',this)
-		Modal.show('confirmation', function (){
-			return this
-		})
-	}
-});
