@@ -51,7 +51,7 @@
 		<div class="form-group row">
 			<label for="plate-input" class="col-xs-2 col-form-label">License Plate</label>
 			<div class="col-xs-10">
-				<input name="plate" class="form-control" type="text" value="{{plate}}" id="plate-input">
+				<input name="plate" class="form-control" type="text" value="{{plate}}" id="plate-input" oninvalid="this.setCustomValidity('Please enter your license plate')" onchange="this.setCustomValidity('')" required>
 			</div>
 		</div>
 
