@@ -54,6 +54,7 @@ h1 {
 
 h4, h5 {
    text-align:left;
+   font-family: Verdana,sans-serif;
 }
 
 h4-splash {
@@ -63,6 +64,7 @@ h4-splash {
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
+    font-family: Verdana,sans-serif;
 }
 
 .new-space input {
