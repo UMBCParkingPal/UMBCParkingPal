@@ -14,6 +14,8 @@ AutoForm.addHooks(['insertParkingSpaceForm'], {
   }
 });
 
+
+
 Template.MyParkingSpaces.helpers({
 	MyParkingSpaces: ()=> {
 		var thisId = Meteor.userId();
@@ -26,6 +28,18 @@ Template.MyParkingSpaces.helpers({
 Template.Buy.helpers({
 	FilteredParkingSpaces: ()=>{
 		return ParkingSpaces.find({});
+
+
+		var toReturn = []
+
+		lotsWeWant = Session.get('LotArray')
+
+		for(i = 0; i < lotsWeWant.length; i++){
+			toReturn += ParkingSpaces.find({lotNum: lotsWeWant[i]});
+			console.log(ParkingSpaces.find({lotNum: lotsWeWant[i]}));
+		}
+		console.log(lotsWeWant);
+		return toReturn
 	}
 })
 
@@ -34,9 +48,18 @@ Template.Buy.events({
 		var yourArray = []
 		$("input:checkbox[name=lotnumber]:checked").each(function(){
     	yourArray.push($(this).val());
-		});
+ 		});
 		console.log(yourArray);
 		Session.set('LotArray', yourArray)
+	},
+	'click .filterLot': function(){
+		if(Session.get('LotFlag') != null){
+			Session.set('LotFlag', !Session.get('LotFlag'))
+		} else {
+			Session.set('LotFlag', true)
+		}
+		console.log(Session.get('LotFlag'));
+
 	}
 })
 
@@ -62,9 +85,24 @@ Template.ParkingSpace.helpers({
 
 Template.MyParkingSpaces.events({
 	'click .delete': function () {
-		Meteor.call('deleteParkingSpace', this._id);
-		Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
-		console.log("Deleted");
+
+    new Confirmation({
+      message: "Are you sure ?",
+      title: "Confirmation",
+      cancelText: "Cancel",
+      okText: "Ok",
+      success: true, // whether the button should be green or red
+      focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
+    }, function (ok) {
+      if(ok){
+        Meteor.call('deleteParkingSpace', this._id);
+        Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
+        console.log("Deleted");
+      }
+    });
+
+
+
 	},
 	'click .buy': function(){
 		Session.set('ParkingSpace',this)

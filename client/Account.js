@@ -46,7 +46,7 @@ Template.Register.events({
     if(event.target.plate.value){
       Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.plate' : event.target.plate.value}})
     }
-
+    console.log(Meteor.user());
   }
 })
 
