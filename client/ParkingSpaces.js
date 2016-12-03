@@ -17,6 +17,14 @@ Template.MyParkingSpaces.helpers({
 	}
 })
 
+Template.Buy.events({
+  'click .buy': function(){
+    Session.set('ParkingSpace',this)
+    Modal.show('confirmation', function (){
+      return this
+    })
+  }
+})
 
 Template.Buy.helpers({
 	FilteredParkingSpaces: ()=>{
@@ -75,6 +83,8 @@ Template.ParkingSpace.helpers({
 	}
 });
 
+
+
 Template.MyParkingSpace.events({
 	'click .delete': function () {
     new Confirmation({
@@ -92,10 +102,4 @@ Template.MyParkingSpace.events({
       }
     });
 	},
-	'click .buy': function(){
-		Session.set('ParkingSpace',this)
-		Modal.show('confirmation', function (){
-			return this
-		})
-	}
 });
