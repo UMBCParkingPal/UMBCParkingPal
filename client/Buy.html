@@ -1,5 +1,4 @@
 <template name="Buy">
-
 <div class="page-header">
    <center><h1>Search Listings</h1></center>
 </div>
@@ -12,13 +11,10 @@
 
 <div class="container">
 <div class="row">
-<div class="control-group" style="float:left">
-    <p class="pull-left">Parking Lot</p>
-	<br/>
-
+<div class="control-group" style="float:left; padding-left:70px">
     <div class="controls span2" style="float:left">
-	<div class="form-group row">
-			<select name="lot" style="margin-left: 15px">
+	<div class="form-group">
+			<select name="lot" class="form-control" style="float: left">
 				<option disabled selected>Filter by Lot Number</option>
 				 <option value = "1">1</option>
 				 <option value = "2">2</option>
@@ -49,26 +45,23 @@
 				 <option value = "27">27</option>
 				 <option value = "28">28</option>
 			</select>
+	</div>
+</div>
+</div>
+<div class="control-group" style="float:left; padding-left: 100px">
+    <div class="controls span2" style="float:left">
+	<div class="form-group">
+			<select name="price" class="form-control" style="float: left">
+				<option disabled selected>Filter by Price</option>
+				 <option value = "1">1</option>
+				 <option value = "2">2</option>
+				 <option value = "3">3</option>
+				 <option value = "4">4</option>
+				 <option value = "5">5</option>
+			</select>
 		</div>
     </div>
 </div>
-</div>
-<div class="row">
-	<div style="float:left;">
-	<button type="button" class="filterLot btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-filter"></span> Filter Time
-        </button>
-	</div>
-	<div style="padding-left:50px; float:left;">
-	<button type="button" class="filterPrice btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-filter"></span> Filter Price
-        </button>
-	</div>
-	<div style="padding-left:50px; float:left">
-	<button type="button" class="filterRating btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-filter"></span> Filter Rating
-        </button>
-	</div>
 </div>
 </div>
 <br/>
