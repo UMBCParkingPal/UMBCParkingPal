@@ -13,7 +13,7 @@ Template.saleFinal.events({
 Template.SellParkingSpace.helpers({
   'canSellSpace': ()=>{
     var thisId = Meteor.userId();
-    if (ParkingSpaces.find({userID: thisId}).fetch().length == 0){
+    if (ParkingSpaces.find({sellerID: thisId}).fetch().length == 0){
       return true
     }
     return false
@@ -23,6 +23,10 @@ Template.SellParkingSpace.helpers({
 Template.Register.events({
   'submit form': function(){
     event.preventDefault();
+
+    Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.totalRating' : 0}})
+
+    Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.numRatings' : 0}})
 
     if(event.target.phonenumber.value){
       Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.permit' : event.target.permit.value}})

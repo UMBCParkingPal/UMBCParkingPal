@@ -76,11 +76,9 @@ Template.ParkingSpace.helpers({
 	}
 });
 
-Template.MyParkingSpaces.events({
+Template.MyParkingSpace.events({
 	'click .delete': function () {
-
     new Confirmation({
-      message: "Are you sure ?",
       title: "Confirmation",
       cancelText: "Cancel",
       okText: "Ok",
@@ -88,6 +86,7 @@ Template.MyParkingSpaces.events({
       focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
       if(ok){
+        console.log(this._id);
         Meteor.call('deleteParkingSpace', this._id);
         Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
         console.log("Deleted");

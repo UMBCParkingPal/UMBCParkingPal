@@ -79,7 +79,7 @@ ParkingSpaceSchema = new SimpleSchema({
         type: String,
         label: "Description"
     },
-	userID: {
+	sellerID: {
 		type: String,
 		label: "User",
 		autoValue: function () {
@@ -89,7 +89,26 @@ ParkingSpaceSchema = new SimpleSchema({
 			type: "hidden"
 		}
 	},
-
+	buyerID: {
+		type: String,
+		label: "User",
+		autoValue: function () {
+			return ""
+		},
+		autoform: {
+			type: "hidden"
+		}
+	},
+	isBought: {
+		type: Boolean,
+		label: "User",
+		autoValue: function () {
+			return false
+		},
+		autoform: {
+			type: "hidden"
+		}
+	},
 	usersName: {
 		type: String,
 		label: "User",
