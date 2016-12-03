@@ -1,11 +1,11 @@
 Meteor.subscribe('parkingSpaces');
 Meteor.subscribe("users");
 
-Template.ParkingSpaces.helpers({
-	ParkingSpaces: ()=> {
-		return ParkingSpaces.find({});
-	}
-});
+// Template.ParkingSpaces.helpers({
+// 	ParkingSpaces: ()=> {
+// 		return ParkingSpaces.find({});
+// 	}
+// });
 
 AutoForm.addHooks(['insertParkingSpaceForm'], {
   onSuccess: function(operation, result, template) {
@@ -23,9 +23,20 @@ Template.MyParkingSpaces.helpers({
 	}
 })
 
-Template.ParkingSpaces.helpers({
-	FilteredParkingSpaces: (lotNum,price)=>{
+Template.Buy.helpers({
+	FilteredParkingSpaces: ()=>{
 		return ParkingSpaces.find({});
+	}
+})
+
+Template.Buy.events({
+	'click input': function(event,template){
+		var yourArray = []
+		$("input:checkbox[name=lotnumber]:checked").each(function(){
+    	yourArray.push($(this).val());
+		});
+		console.log(yourArray);
+		Session.set('LotArray', yourArray)
 	}
 })
 
