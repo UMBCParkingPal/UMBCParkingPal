@@ -9,10 +9,10 @@ AutoForm.addHooks(['insertParkingSpaceForm'], {
 });
 
 Template.MyParkingSpaces.helpers({
-	MyParkingSpaces: ()=> {
+	MyParkingSpacesList: ()=> {
 		var thisId = Meteor.userId();
 		if (thisId) {
-			return ParkingSpaces.find({userID: thisId},{isBought: false});
+			return ParkingSpaces.find({sellerID: thisId},{isBought: false});
 		};
 	}
 })
@@ -21,7 +21,6 @@ Template.MyParkingSpaces.helpers({
 Template.Buy.helpers({
 	FilteredParkingSpaces: ()=>{
 		return ParkingSpaces.find({});
-
 
 		var toReturn = []
 
