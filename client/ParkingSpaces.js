@@ -1,18 +1,21 @@
 Meteor.subscribe('parkingSpaces');
 Meteor.subscribe("users");
 
-// Template.ParkingSpaces.helpers({
-// 	ParkingSpaces: ()=> {
-// 		return ParkingSpaces.find({});
-// 	}
-// });
-
 AutoForm.addHooks(['insertParkingSpaceForm'], {
   onSuccess: function(operation, result, template) {
     FlowRouter.go("/");
 		Modal.show('sellConfirmation')
   }
 });
+
+Template.MyParkingSpaces.helpers({
+	MyParkingSpaces: ()=> {
+		var thisId = Meteor.userId();
+		if (thisId) {
+			return ParkingSpaces.find({sellerID: thisId},{isBought: false});
+		};
+	}
+})
 
 
 Template.Buy.helpers({
@@ -73,3 +76,28 @@ Template.ParkingSpace.helpers({
 	}
 });
 
+Template.MyParkingSpaces.events({
+	'click .delete': function () {
+
+    new Confirmation({
+      message: "Are you sure ?",
+      title: "Confirmation",
+      cancelText: "Cancel",
+      okText: "Ok",
+      success: true, // whether the button should be green or red
+      focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
+    }, function (ok) {
+      if(ok){
+        Meteor.call('deleteParkingSpace', this._id);
+        Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
+        console.log("Deleted");
+      }
+    });
+	},
+	'click .buy': function(){
+		Session.set('ParkingSpace',this)
+		Modal.show('confirmation', function (){
+			return this
+		})
+	}
+});
