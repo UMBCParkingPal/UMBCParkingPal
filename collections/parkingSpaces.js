@@ -1,8 +1,5 @@
 ParkingSpaces = new Mongo.Collection('parkingSpaces');
 
-ParkingSpaces._ensureIndex( {"expireAt": 1}, {expireAfterSeconds: 0});
-
-
 ParkingSpaceSchema = new SimpleSchema({
 	price: {
 		type: Number,

@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+//import {ParkingSpaces} from 'collections/parkingSpaces.js';
+
 Meteor.startup(function () {
     Accounts.loginServiceConfiguration.remove({service: "google"});
 
@@ -8,6 +10,6 @@ Meteor.startup(function () {
     secret: "WBeQbU_GHjxnNexAQJvIKbPU"
   });
 
-
+    //ParkingSpaces._ensureIndex( {"expireAt": 1}, {expireAfterSeconds: 0});
 
 });

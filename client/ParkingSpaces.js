@@ -4,6 +4,7 @@ Meteor.subscribe("users");
 Session.set('LotFlag',false)
 Session.set('PriceFlag',false)
 
+//import {ParkingSpaces} from '../collections/parkingSpaces.js';
 
 AutoForm.addHooks(['insertParkingSpaceForm'], {
   onSuccess: function(operation, result, template) {
@@ -130,7 +131,10 @@ Template.MyParkingSpace.events({
     }, function (ok) {
       if(ok){
         console.log(this._id);
+
+        //have to check if spot is bought
         Meteor.call('deleteParkingSpace', this._id);
+        //ParkingSpaces.remove(this._id);
         Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
         console.log("Deleted");
       }
