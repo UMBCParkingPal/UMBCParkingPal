@@ -85,6 +85,7 @@ Students.schema = new SimpleSchema({
 			type: "hidden"
 		}
 	}
+
 });
 
 Meteor.methods({

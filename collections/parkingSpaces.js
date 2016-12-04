@@ -1,5 +1,8 @@
 ParkingSpaces = new Mongo.Collection('parkingSpaces');
 
+ParkingSpaces._ensureIndex( {"expireAt": 1}, {expireAfterSeconds: 0});
+
+
 ParkingSpaceSchema = new SimpleSchema({
 	price: {
 		type: Number,
@@ -128,7 +131,21 @@ ParkingSpaceSchema = new SimpleSchema({
 		autoform: {
 			type: "hidden"
 		}
+	},
+	expireAt: {
+		type: Date,
+		label: "Expire At",
+		autoValue: function() {
+			current = new Date();
+			hour = this.field('time.hour').value;
+			min = this.field('time.minute').value;
+			return new Date(current.getFullYear(), current.getMonth(), current.getDate(), hour, min)
+		},
+		autoform: {
+			type: "hidden"
+		}
 	}
+
 });
 
 Meteor.methods({
