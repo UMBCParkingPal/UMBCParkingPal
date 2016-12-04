@@ -75,15 +75,32 @@ Template.SellParkingSpace.events({
 
 
 Template.ParkingSpace.helpers({
-	editMode: function(){
-		return Template.instance().editMode.get();
-	},
 	canDelete: function(){
 		return this.usersName == Meteor.user().profile.name
 	}
 });
 
 
+Template.ParkingSpace.helpers({
+  getUserRating:()=> {
+
+    thisId = Template.instance().data.sellerID;
+    var rating = Meteor.users.findOne({ "_id" : thisId }).profile.totalRating
+    var numRatings = Meteor.users.findOne({ "_id" : thisId }).profile.numRatings
+
+    if(numRatings == 0){
+      return "No Ratings"
+    }
+
+    var average = rating/numRatings
+
+    if(numRatings == 1){
+      return average.toFixed(2) + "/5 ("+ numRatings +" rating)"
+    }
+    return average.toFixed(2) + "/5 ("+ numRatings +" ratings)"
+
+  }
+})
 
 Template.MyParkingSpace.events({
 	'click .delete': function () {
