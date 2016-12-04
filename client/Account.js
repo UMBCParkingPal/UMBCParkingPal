@@ -2,8 +2,6 @@ Meteor.subscribe('parkingSpaces');
 
 
 
-
-
 Template.SellParkingSpace.helpers({
   'canSellSpace': ()=>{
     var thisId = Meteor.userId();
@@ -99,7 +97,22 @@ Template.Account.helpers({
     if (user) {
       return user.profile.plate
     }
-   }
+  },
+  rating: ()=>{
+    var rating = Meteor.user().profile.totalRating
+    var numRatings = Meteor.user().profile.numRatings
+
+    if(numRatings == 0){
+      return "No Ratings"
+    }
+    
+    var average = rating/numRatings
+
+    if(numRatings == 1){
+      return average.toFixed(2) + "/5 ("+ numRatings +" rating)"
+    }
+    return average.toFixed(2) + "/5 ("+ numRatings +" ratings)"
+  }
 });
 
 Template.Account.events({
