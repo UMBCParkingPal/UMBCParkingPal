@@ -1,6 +1,10 @@
 Meteor.subscribe('parkingSpaces');
 Meteor.subscribe("users");
 
+Session.set('LotFlag',false)
+Session.set('PriceFlag',false)
+
+
 AutoForm.addHooks(['insertParkingSpaceForm'], {
   onSuccess: function(operation, result, template) {
     FlowRouter.go("/");
@@ -28,38 +32,51 @@ Template.Buy.events({
 
 Template.Buy.helpers({
 	FilteredParkingSpaces: ()=>{
-		return ParkingSpaces.find({});
+    console.log(Session.get('PriceFilter'));
+    console.log(Session.get('LotNumberFilter'));
 
-		var toReturn = []
-
-		lotsWeWant = Session.get('LotArray')
-
-		for(i = 0; i < lotsWeWant.length; i++){
-			toReturn += ParkingSpaces.find({lotNum: lotsWeWant[i]});
-			console.log(ParkingSpaces.find({lotNum: lotsWeWant[i]}));
-		}
-		console.log(lotsWeWant);
-		return toReturn
-	}
+    if(Session.get('LotFlag') && Session.get('PriceFlag')){
+      return ParkingSpaces.find({
+        "isBought": false,
+        "price" : { $lte: Session.get('PriceFilter')},
+        "lotNum" : Session.get('LotNumberFilter')
+      });
+    } else if(Session.get('LotFlag')){
+      return ParkingSpaces.find({
+        "isBought": false,
+        "lotNum" : Session.get('LotNumberFilter')
+      });
+    } else if(Session.get('PriceFlag')) {
+      return ParkingSpaces.find({
+        "isBought": false,
+        "price" : { $lte: Session.get('PriceFilter')},
+      });
+    } else {
+      return ParkingSpaces.find({
+        "isBought": false,
+      });
+    }
+  }
 })
 
 Template.Buy.events({
-	'click input': function(event,template){
-		var yourArray = []
-		$("input:checkbox[name=lotnumber]:checked").each(function(){
-    	yourArray.push($(this).val());
- 		});
-		console.log(yourArray);
-		Session.set('LotArray', yourArray)
+	'change #lot': function(event){
+    var input = $(event.target).val()
+    if(input == 0){
+      Session.set('LotFlag',false)
+    } else {
+      Session.set('LotFlag',true)
+  		Session.set('LotNumberFilter',parseInt(input))
+    }
 	},
-	'click .filterLot': function(){
-		if(Session.get('LotFlag') != null){
-			Session.set('LotFlag', !Session.get('LotFlag'))
-		} else {
-			Session.set('LotFlag', true)
-		}
-		console.log(Session.get('LotFlag'));
-
+	'click #price': function(){
+    var input = $(event.target).val()
+    if(input == 0){
+      Session.set('PriceFlag',false)
+    } else {
+      Session.set('PriceFlag',true)
+      Session.set('PriceFilter',parseInt(input))
+    }
 	}
 })
 
