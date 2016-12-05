@@ -146,24 +146,21 @@ Template.MyParkingSpace.helpers({
 
 Template.MyParkingSpace.events({
 	'click .delete': function () {
-    // new Confirmation({
-    //   title: "Confirmation",
-    //   cancelText: "Cancel",
-    //   okText: "Ok",
-    //   success: true, // whether the button should be green or red
-    //   focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
-    // }, function (ok) {
-    //   if(ok){
-    //     console.log(this._id);
-    //
-    //     //have to check if spot is bought
-    //     Meteor.call('deleteParkingSpace', this._id);
-    //     //ParkingSpaces.remove(this._id);
-    //     Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
-    //     console.log("Deleted");
-    //   }
-    // });
-    Meteor.call('deleteParkingSpace', this._id);
+    toDelete = Template.instance().data._id
+    new Confirmation({
+      title: "Confirmation",
+      cancelText: "Cancel",
+      okText: "Ok",
+      success: true, // whether the button should be green or red
+      focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
+    }, function (ok) {
+      if(ok){
+        console.log(toDelete);
+        Meteor.call('deleteParkingSpace', toDelete);
+        ParkingSpaces.remove(this._id);
+      }
+    });
+    // Meteor.call('deleteParkingSpace', this._id);
     //ParkingSpaces.remove(this._id);
   },
 });
