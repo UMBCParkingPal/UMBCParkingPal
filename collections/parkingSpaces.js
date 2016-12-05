@@ -16,11 +16,27 @@ ParkingSpaceSchema = new SimpleSchema({
         min: 1,
         max:12
     },
+    
     'time.minute': {
         type: Number,
 		label: "Minute",
         min: 0,
         max: 59
+    },
+    'time.minuteStr': {
+    	type: String,
+    	label: "Min String",
+    	autoform: {
+    		type: "hidden"
+    	},
+    	autoValue: function () {
+    		num = this.field('time.minute').value;
+    		numStr = num.toString();
+    		if( num < 10){
+    			numStr = "0" + numStr;
+    		}
+    		return numStr;
+    	}
     },
     'time.ampm': {
         type: String,
@@ -125,26 +141,26 @@ ParkingSpaceSchema = new SimpleSchema({
 			type: "hidden"
 		}
 	},
-	// expireAt: {
-	// 	type: Date,
-	// 	label: "Expire At",
-	// 	autoValue: function() {
-	// 		current = new Date();
-	// 		console.log(current);
-	// 		hour = this.field('time.hour').value;
-	// 		//convert to military
-	// 		if( this.field('time.ampm').value == "PM" ){
-	// 			hour = hour + 12;
-	// 		}
-	// 		min = this.field('time.minute').value;
-	// 		date =  new Date(current.getFullYear(), current.getMonth(), current.getDate(), hour, min);
-	// 		console.log(date);
-	// 		return	date;
-	// 	},
-	// 	autoform: {
-	// 		type: "hidden"
-	// 	}
-	// }
+	expireAt: {
+		type: Date,
+		label: "Expire At",
+		autoValue: function() {
+			current = new Date();
+			console.log(current);
+			hour = this.field('time.hour').value;
+			//convert to military
+			if( this.field('time.ampm').value == "PM" ){
+				hour = hour + 12;
+			}
+			min = this.field('time.minute').value;
+			date =  new Date(current.getFullYear(), current.getMonth(), current.getDate(), hour, min);
+			console.log(date);
+			return	date;
+		},
+		autoform: {
+			type: "hidden"
+		}
+	}
 
 });
 
