@@ -30,11 +30,14 @@ Template.MyParkingSpaces.helpers({
 	MyParkingSpacesList: ()=> {
 		var thisId = Meteor.userId();
 		if (thisId) {
+      return ParkingSpaces.find({sellerID: thisId});
+      /*
       if(ParkingSpaces.find({sellerID: thisId},{isBought: false})){
-			   return ParkingSpaces.find({sellerID: thisId},{isBought: false})
-       } else if (ParkingSpaces.findOne({sellerID: thisId},{isBought: true})) {
-         return ParkingSpaces.findOne({sellerID: thisId},{isBought: true});
+			   return ParkingSpaces.find({sellerID: thisId},{isBought: false});
+       } else if (ParkingSpaces.find({sellerID: thisId},{isBought: true})) {
+         return ParkingSpaces.find({sellerID: thisId},{isBought: true});
        }
+       */
 		};
 	}
 })

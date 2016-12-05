@@ -18,7 +18,12 @@
     <footer class="w3-container w3-blue">
       <h3>{{time.hour}}:{{time.minuteStr}} {{time.ampm}}</h3>
 			{{#if isSold}}
-				<button type="button" class="confirm btn" data-dismiss="modal">Complete</button>
+        
+				<button type="button" class="confirm btn" data-dismiss="modal" style="background-color: #B3B6B7;" >Confirm Exchange
+          </button>
+          <h5 style="text-align: center;">Your spot was purchased!</h5>
+      {{else}}
+        <h5 style="text-align: center;">Spot available</h5>
 			{{/if}}
     </footer>
   </div>
