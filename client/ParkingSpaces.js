@@ -60,6 +60,13 @@ Template.Buy.helpers({
   }
 })
 
+Template.PurchasedListing.helpers({
+  'MyActivePurchase' :()=>{
+    var thisId = Meteor.userId();
+    return ParkingSpaces.find({sellerID: thisId},{isBought: false});
+  }
+})
+
 Template.Buy.events({
 	'change #lot': function(event){
     var input = $(event.target).val()
