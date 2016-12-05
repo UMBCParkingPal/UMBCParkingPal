@@ -41,21 +41,21 @@ Template.Buy.helpers({
         "isBought": false,
         "price" : { $lte: Session.get('PriceFilter')},
         "lotNum" : Session.get('LotNumberFilter')
-      });
+      }, {sort: ['time.hour', 'time.minute']} );
     } else if(Session.get('LotFlag')){
       return ParkingSpaces.find({
         "isBought": false,
         "lotNum" : Session.get('LotNumberFilter')
-      });
+      }, {sort: ['time.hour', 'time.minute']} );
     } else if(Session.get('PriceFlag')) {
       return ParkingSpaces.find({
         "isBought": false,
         "price" : { $lte: Session.get('PriceFilter')},
-      });
+      }, {sort: ['time.hour', 'time.minute']} );
     } else {
       return ParkingSpaces.find({
         "isBought": false,
-      });
+      }, {sort: ['time.hour', 'time.minute']} );
     }
   }
 })
