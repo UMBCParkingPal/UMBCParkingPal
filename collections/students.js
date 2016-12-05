@@ -42,6 +42,7 @@ Students.schema = new SimpleSchema({
 	avgRating: {
 		type: Number,
 		label: "Average Rating",
+		defaultValue: 5,
 		autoform: {
 	 		type: "hidden"
 	 	}
@@ -49,6 +50,7 @@ Students.schema = new SimpleSchema({
 	totalRatings: {
 		type: Number,
 		label: "Total Ratings",
+		defaultValue: 0,
 		autoform: {
 	 		type: "hidden"
 	 	}
