@@ -4,8 +4,6 @@ Meteor.subscribe("users");
 Session.set('LotFlag',false)
 Session.set('PriceFlag',false)
 
-//import {ParkingSpaces} from '../collections/parkingSpaces.js';
-
 AutoForm.addHooks(['insertParkingSpaceForm'], {
   onSuccess: function(operation, result, template) {
     FlowRouter.go("/");
@@ -17,7 +15,11 @@ Template.MyParkingSpaces.helpers({
 	MyParkingSpacesList: ()=> {
 		var thisId = Meteor.userId();
 		if (thisId) {
-			return ParkingSpaces.find({sellerID: thisId},{isBought: false});
+      if(ParkingSpaces.find({sellerID: thisId},{isBought: false})){
+			   return ParkingSpaces.find({sellerID: thisId},{isBought: false})
+       } else if (ParkingSpaces.findOne({sellerID: thisId},{isBought: true})) {
+         return ParkingSpaces.findOne({sellerID: thisId},{isBought: true});
+       }
 		};
 	}
 })
@@ -41,29 +43,22 @@ Template.Buy.helpers({
         "isBought": false,
         "price" : { $lte: Session.get('PriceFilter')},
         "lotNum" : Session.get('LotNumberFilter')
-      }, {sort: ['time.hour', 'time.minute']} );
+      });
     } else if(Session.get('LotFlag')){
       return ParkingSpaces.find({
         "isBought": false,
         "lotNum" : Session.get('LotNumberFilter')
-      }, {sort: ['time.hour', 'time.minute']} );
+      });
     } else if(Session.get('PriceFlag')) {
       return ParkingSpaces.find({
         "isBought": false,
         "price" : { $lte: Session.get('PriceFilter')},
-      }, {sort: ['time.hour', 'time.minute']} );
+      });
     } else {
       return ParkingSpaces.find({
         "isBought": false,
-      }, {sort: ['time.hour', 'time.minute']} );
+      });
     }
-  }
-})
-
-Template.PurchasedListing.helpers({
-  'MyActivePurchase' :()=>{
-    var thisId = Meteor.userId();
-    return ParkingSpaces.find({sellerID: thisId},{isBought: false});
   }
 })
 
@@ -123,28 +118,39 @@ Template.ParkingSpace.helpers({
       return average.toFixed(2) + "/5 ("+ numRatings +" rating)"
     }
     return average.toFixed(2) + "/5 ("+ numRatings +" ratings)"
+  }
+})
 
+
+Template.MyParkingSpace.helpers({
+  hasPosting:()=>{
+    var thisId = Meteor.userId();
+    console.log(ParkingSpaces.find({sellerID: thisId},{isBought: true}) != 0);
+    return ParkingSpaces.find({sellerID: thisId},{isBought: true}) != 0;
   }
 })
 
 Template.MyParkingSpace.events({
 	'click .delete': function () {
-    new Confirmation({
-      title: "Confirmation",
-      cancelText: "Cancel",
-      okText: "Ok",
-      success: true, // whether the button should be green or red
-      focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
-    }, function (ok) {
-      if(ok){
-        console.log(this._id);
-
-        //have to check if spot is bought
-        Meteor.call('deleteParkingSpace', this._id);
-        //ParkingSpaces.remove(this._id);
-        Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
-        console.log("Deleted");
-      }
-    });
-	},
+    // new Confirmation({
+    //   title: "Confirmation",
+    //   cancelText: "Cancel",
+    //   okText: "Ok",
+    //   success: true, // whether the button should be green or red
+    //   focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
+    // }, function (ok) {
+    //   if(ok){
+    //     console.log(this._id);
+    //
+    //     //have to check if spot is bought
+    //     Meteor.call('deleteParkingSpace', this._id);
+    //     //ParkingSpaces.remove(this._id);
+    //     Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
+    //     console.log("Deleted");
+    //   }
+    // });
+    Meteor.call('deleteParkingSpace', this._id);
+    //ParkingSpaces.remove(this._id);
+    Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
+  },
 });

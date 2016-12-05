@@ -15,6 +15,9 @@
 
     <footer class="w3-container w3-blue">
       <h3>{{time.hour}}:{{time.minute}} {{time.ampm}}</h3>
+			{{#if hasPosting}}
+				<button type="button" href="/" class="rate btn" data-dismiss="modal">Complete</button>
+			{{/if}}
     </footer>
   </div>
 </div>

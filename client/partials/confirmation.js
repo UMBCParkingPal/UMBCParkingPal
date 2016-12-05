@@ -12,7 +12,7 @@ Template.saleFinal.events({
     Meteor.users.update( {_id:sellerID},{$set: {'profile.totalRating' : Meteor.users.findOne(Session.get("ParkingSpace").sellerID).profile.totalRating + rating}})
     Meteor.users.update( {_id:sellerID},{$set: {'profile.numRatings' : Meteor.users.findOne(Session.get("ParkingSpace").sellerID).profile.numRatings + 1}})
 
-    console.log(Meteor.users.findOne(Session.get("ParkingSpace").sellerID).profile);
+
   }
 })
 
@@ -28,16 +28,13 @@ Template.confirmation.events({
   'click .pay': function(){
     Modal.hide()
 
-    // Modal.show('saleFinal', function (){
-    //   return this
-    // })
-    ParkingSpaces.update(Session.get("ParkingSpace")._id,{
-      $set: { isBought: true },
-      $set: { buyerID: Meteor.userId()},
-    });
-    // ParkingSpaces.update(Session.get("ParkingSpace")._id}Meteor.userId()
+    postID = Session.get("ParkingSpace")._id
 
-    console.log(ParkingSpaces.findOne({sellerID:Session.get("ParkingSpace").sellerID}).isBought);
+    console.log(postID);
+    console.log(ParkingSpaces.findOne()._id);
+    ParkingSpaces.update( {_id:postID},{$set: {isBought : true} } )
+    ParkingSpaces.update( {_id:postID},{$set: {buyerID : Meteor.userId()} } )
+
   }
 })
 
