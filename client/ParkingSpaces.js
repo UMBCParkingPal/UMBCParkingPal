@@ -1,5 +1,8 @@
 Meteor.subscribe('parkingSpaces');
 Meteor.subscribe("users");
+Modal.allowMultiple = true
+
+
 
 Session.set('LotFlag',false)
 Session.set('PriceFlag',false)
@@ -10,6 +13,18 @@ AutoForm.addHooks(['insertParkingSpaceForm'], {
 		Modal.show('sellConfirmation')
   }
 });
+
+Template.MyParkingSpace.events({
+  'click .confirm': function(){
+    Modal.hide()
+
+    console.log("Yo");
+    Modal.show('saleFinal', function (){
+      console.log(this);
+      return this
+    })
+  }
+})
 
 Template.MyParkingSpaces.helpers({
 	MyParkingSpacesList: ()=> {
@@ -123,10 +138,9 @@ Template.ParkingSpace.helpers({
 
 
 Template.MyParkingSpace.helpers({
-  hasPosting:()=>{
-    var thisId = Meteor.userId();
-    console.log(ParkingSpaces.find({sellerID: thisId},{isBought: true}) != 0);
-    return ParkingSpaces.find({sellerID: thisId},{isBought: true}) != 0;
+  isSold:()=>{
+    console.log(Template.instance().data.isBought);
+    return Template.instance().data.isBought;
   }
 })
 
@@ -151,6 +165,5 @@ Template.MyParkingSpace.events({
     // });
     Meteor.call('deleteParkingSpace', this._id);
     //ParkingSpaces.remove(this._id);
-    Meteor.users.update( {_id:Meteor.userId()},{$set: {'profile.activeListing' : 0}})
   },
 });

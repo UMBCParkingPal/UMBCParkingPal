@@ -6,7 +6,9 @@
   <div class="w3-card-4">
     <header class="w3-container w3-blue">
       <h1>Lot {{lotNum}}</h1>
-	    <button class="delete"><h1>&times;</h1></button>
+			{{#unless isSold}}
+	    	<button class="delete"><h1>&times;</h1></button>
+			{{/unless}}
     </header>
 
     <div class="w3-container">
@@ -15,8 +17,8 @@
 
     <footer class="w3-container w3-blue">
       <h3>{{time.hour}}:{{time.minute}} {{time.ampm}}</h3>
-			{{#if hasPosting}}
-				<button type="button" href="/" class="rate btn" data-dismiss="modal">Complete</button>
+			{{#if isSold}}
+				<button type="button" class="confirm btn" data-dismiss="modal">Complete</button>
 			{{/if}}
     </footer>
   </div>

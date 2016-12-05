@@ -1,41 +1,11 @@
 <template name="saleFinal">
-  {{#with ParkingSpaceInfo}}
+  <!-- {{#with ParkingSpaceInfo}} -->
     <div class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Here's your parking space info</h4>
                 </div>
-
-                <div class="modal-body">
-                  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-                  <div class="col-md-6">
-                  <article class="parkingSpace">
-                    <div class="w3-container" style="padding-bottom:10px">
-                  <div class="w3-card-4">
-                    <header class="w3-container w3-blue">
-                      <h1>Lot {{lotNum}}</h1>
-                    </header>
-
-                    <div class="w3-container">
-                      <p>${{price}}</p>
-                    </div>
-
-                    <footer class="w3-container w3-blue">
-                      <h5>{{leavingTime}}</h5>
-                      <br>
-                      {{usersName}}
-                    </footer>
-                  </div>
-                </div>
-                  </article>
-                </div>
-              </div>
-
-                <div class="modal-footer">
-                  <div class="page-header">
-                  	<h3 align=center>Choose a Rating</h3>
-                  </div>
 
                   <div style="height:100px; width:300px; float:right; text-align:center">
                     <span class="star-rating">
@@ -50,8 +20,8 @@
                 </div>
 
             </div>
-        </div>
+
     </div>
   </div>
-    {{/with}}
+    <!-- {{/with}} -->
 </template>

@@ -7,11 +7,13 @@ Template.saleFinal.events({
 
     var rating = parseInt($(element).val());
 
-    var sellerID = Session.get("ParkingSpace").sellerID
 
-    Meteor.users.update( {_id:sellerID},{$set: {'profile.totalRating' : Meteor.users.findOne(Session.get("ParkingSpace").sellerID).profile.totalRating + rating}})
-    Meteor.users.update( {_id:sellerID},{$set: {'profile.numRatings' : Meteor.users.findOne(Session.get("ParkingSpace").sellerID).profile.numRatings + 1}})
+    var sellerID = ParkingSpaces.findOne({buyerID:Meteor.userId()}).sellerID
 
+    Meteor.users.update( {_id:sellerID},{$inc: {'profile.totalRating' : rating}})
+    Meteor.users.update( {_id:sellerID},{$inc: {'profile.numRatings' : 1}})
+
+    Meteor.call('deleteParkingSpace', ParkingSpaces.findOne({buyerID:Meteor.userId()})._id);
 
   }
 })
