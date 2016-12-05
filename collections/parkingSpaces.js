@@ -134,9 +134,16 @@ ParkingSpaceSchema = new SimpleSchema({
 		label: "Expire At",
 		autoValue: function() {
 			current = new Date();
+			console.log(current);
 			hour = this.field('time.hour').value;
+			//convert to military
+			if( this.field('time.ampm').value == "PM" ){
+				hour = hour + 12;
+			}
 			min = this.field('time.minute').value;
-			return new Date(current.getFullYear(), current.getMonth(), current.getDate(), hour, min)
+			date =  new Date(current.getFullYear(), current.getMonth(), current.getDate(), hour, min);
+			console.log(date);
+			return	date;
 		},
 		autoform: {
 			type: "hidden"

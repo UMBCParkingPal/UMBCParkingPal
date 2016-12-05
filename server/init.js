@@ -10,6 +10,6 @@ Meteor.startup(function () {
     secret: "WBeQbU_GHjxnNexAQJvIKbPU"
   });
 
-    //ParkingSpaces._ensureIndex( {"expireAt": 1}, {expireAfterSeconds: 0});
+    ParkingSpaces._ensureIndex( {"expireAt": 1}, {expireAfterSeconds: 0});
 
 });
