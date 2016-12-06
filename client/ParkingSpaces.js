@@ -144,6 +144,7 @@ Template.MyParkingSpace.helpers({
     console.log(Template.instance().data.isBought);
     return Template.instance().data.isBought;
   },
+
   isSeller: function() {
     var user = Meteor.userId();
     var seller = Template.instance().data.sellerID;
@@ -185,11 +186,15 @@ Template.MyParkingSpace.helpers({
       return "no info";
     }
     return student.profile.make;
+  },
+  sellerPhone:()=>{
+    sellerID = Template.instance().sellerID
+    return Meteor.users.findOne({"sellerID" : sellerID}).profile.phonenumber;
+  },
+  isMySpace: ()=> {
+    return Template.instance().data.sellerID == Meteor.user().profile.sellerID;
 
   }
-  // isMySpace: ()=> {
-  //   return Template.instance().data.sellerID ==
-  // }
 })
 
 Template.MyParkingSpace.events({

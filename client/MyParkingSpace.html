@@ -14,11 +14,8 @@
     <div class="w3-container">
       <div style="float: left;"><h3>{{time.hour}}:{{time.minuteStr}} {{time.ampm}}</h3></div>
       <div style="float:right;"><h3>${{price}}</h3></div>
+
     </div>
-<!--
-    <div class="w3-container w3-blue">
-      <h3>{{time.hour}}:{{time.minuteStr}} {{time.ampm}}</h3>
-    </div>-->
 
 			{{#if isSold}}
         <div class="w3-container w3-blue">
@@ -40,6 +37,7 @@
                 <li>Color: </li>
                 <li>License Plate: </li>
               </ul>
+
             {{/if}}
 
             {{#if isBuyer}}
@@ -51,10 +49,15 @@
                 <li>License Plate: </li>
               </ul>
             {{/if}}
-        
+            <h3>Contact Seller: {{sellerPhone}}</h3>
   				
         </div>
         
+
+				<button type="button" class="confirm btn" data-dismiss="modal" style="background-color: #B3B6B7;" >Confirm Exchange
+          </button>
+
+					
 
       {{else}}
         <div class="w3-container w3-blue">
