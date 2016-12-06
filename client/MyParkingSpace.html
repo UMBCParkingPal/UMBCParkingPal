@@ -20,8 +20,7 @@
 			{{#if isSold}}
         <div class="w3-container w3-blue">
           <h5 style="text-align: center;">Spot purchased!</h5>
-          <button type="button" class="confirm btn" data-dismiss="modal" style="background-color: #B3B6B7; margin-bottom: 10px;" >Confirm Exchange
-            </button>
+          <button type="button" class="confirm btn" data-dismiss="modal" style="background-color: #B3B6B7; margin-bottom: 10px;" >Confirm Exchange</button>
         </div>
           <!--
           <div width="80px" height="100px" style="float: center; border-style: solid;border-color: white;" margin= "10px">
@@ -30,7 +29,8 @@
           <div class="w3-container">
 
             {{#if isSeller}}
-              <h4>Buyer Car Info:</h4>
+              <h3>Contact Buyer: {{buyerPhone}}</h3>
+              <h3>Buyer Car Info:</h3>
               <ul>
                 <li>Make: {{buyerMake}}</li>
                 <li>Model: </li>
@@ -41,23 +41,20 @@
             {{/if}}
 
             {{#if isBuyer}}
-              <h4>Seller Car Info:</h4>
+              <h3>Contact Seller: {{sellerPhone}}</h3>
+              <h3>Seller Car Info:</h3>
               <ul>
                 <li>Make: </li>
                 <li>Model: </li>
                 <li>Color: </li>
                 <li>License Plate: </li>
               </ul>
+              <h3>Spot Description:</h3>
+                <p>description</p>
             {{/if}}
-            <h3>Contact Seller: {{sellerPhone}}</h3>
-  				
+            
+
         </div>
-        
-
-				<button type="button" class="confirm btn" data-dismiss="modal" style="background-color: #B3B6B7;" >Confirm Exchange
-          </button>
-
-					
 
       {{else}}
         <div class="w3-container w3-blue">

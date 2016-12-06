@@ -2,8 +2,6 @@ Meteor.subscribe('parkingSpaces');
 Meteor.subscribe("users");
 Modal.allowMultiple = true
 
-
-
 Session.set('LotFlag',false)
 Session.set('PriceFlag',false)
 
@@ -172,21 +170,27 @@ Template.MyParkingSpace.helpers({
   buyerMake: function() {
     var buyer = Template.instance().data.buyerID;
     console.log(buyer);
-    var student = Meteor.users.findOne({"_id" : buyer});
+    var student = Meteor.users.findOne({"buyerID" : buyer});
     if(!student){
       return "no info";
     }
     
     return student.profile.make;
   },
+  buyerPhone: ()=>{
+    buyerID = Template.instance().buyerID
+    return Meteor.users.findOne({"buyerID" : buyerID}).profile.phonenumber;
+  },
+
   sellerMake: function() {
     var seller = Template.instance().data.sellerID;
-    var student = Meteor.users.findOne({seller});
+    var student = Meteor.users.findOne({"sellerID" : seller});
     if(!student){
       return "no info";
     }
     return student.profile.make;
   },
+  
   sellerPhone:()=>{
     sellerID = Template.instance().sellerID
     return Meteor.users.findOne({"sellerID" : sellerID}).profile.phonenumber;
