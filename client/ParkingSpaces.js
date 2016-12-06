@@ -144,6 +144,9 @@ Template.MyParkingSpace.helpers({
     console.log(Template.instance().data.isBought);
     return Template.instance().data.isBought;
   }
+  // isMySpace: ()=> {
+  //   return Template.instance().data.sellerID ==
+  // }
 })
 
 Template.MyParkingSpace.events({
