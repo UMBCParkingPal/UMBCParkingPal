@@ -17,7 +17,6 @@ AutoForm.addHooks(['insertParkingSpaceForm'], {
 Template.MyParkingSpace.events({
   'click .confirm': function(){
     Modal.hide()
-
     console.log("Yo");
     Modal.show('saleFinal', function (){
       console.log(this);
@@ -30,14 +29,14 @@ Template.MyParkingSpaces.helpers({
 	MyParkingSpacesList: ()=> {
 		var thisId = Meteor.userId();
 		if (thisId) {
-      return ParkingSpaces.find({sellerID: thisId});
-      /*
+
+      // This functionality gets the user's listing they puchased or are selling BOTH.
       if(ParkingSpaces.find({sellerID: thisId},{isBought: false})){
 			   return ParkingSpaces.find({sellerID: thisId},{isBought: false});
        } else if (ParkingSpaces.find({sellerID: thisId},{isBought: true})) {
          return ParkingSpaces.find({sellerID: thisId},{isBought: true});
        }
-       */
+
 		};
 	}
 })
