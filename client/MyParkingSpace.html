@@ -27,31 +27,31 @@
           -->
 
           <div class="w3-container">
-
-            {{#if isSeller}}
-              <h3>Contact Buyer: {{buyerPhone}}</h3>
-              <h3>Buyer Car Info:</h3>
-              <ul>
-                <li>Make: {{buyerMake}}</li>
-                <li>Model: </li>
-                <li>Color: </li>
-                <li>License Plate: </li>
-              </ul>
-
-            {{/if}}
-
             {{#if isBuyer}}
-              <h3>Contact Seller: {{sellerPhone}}</h3>
-              <h3>Seller Car Info:</h3>
+              <h3>Contact: {{sellerPhone}}</h3>
+              <h3>Car Info:</h3>
               <ul>
-                <li>Make: </li>
+                <li>Make: <!--{{sellerMake}}--></li>
                 <li>Model: </li>
                 <li>Color: </li>
                 <li>License Plate: </li>
               </ul>
               <h3>Spot Description:</h3>
                 <p>description</p>
+
+            {{else}}
+              <h3>Contact: {{buyerPhone}}</h3>
+              <h3>Car Info:</h3>
+              <ul>
+                <li>Make: <!--{{buyerMake}}--></li>
+                <li>Model: </li>
+                <li>Color: </li>
+                <li>License Plate: </li>
+              </ul>
+
             {{/if}}
+
+            
             
 
         </div>

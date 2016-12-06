@@ -10,12 +10,12 @@
     </header>
 
     <div class="w3-container">
-      <h3>${{price}}</h3>
+      <div style="float: left;"><h3>{{time.hour}}:{{time.minuteStr}} {{time.ampm}}</h3></div>
+      <div style="float:right;"><h3>${{price}}</h3></div>
     </div>
 
     <footer class="w3-container w3-blue">
-      <h3>{{time.hour}}:{{time.minuteStr}} {{time.ampm}}</h3>
-      <div style="float:center;"><button class="buy btn">Buy</button></div>
+      <div style="float:center; margin: 10px;"><button class="buy btn">Buy</button></div>
       <div style="float:right;">{{getUserRating}}</div>
     </footer>
   </div>
