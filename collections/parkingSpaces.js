@@ -16,7 +16,7 @@ ParkingSpaceSchema = new SimpleSchema({
         min: 1,
         max:12
     },
-    
+
     'time.minute': {
         type: Number,
 		label: "Minute",
@@ -31,8 +31,9 @@ ParkingSpaceSchema = new SimpleSchema({
     	},
     	autoValue: function () {
     		num = this.field('time.minute').value;
-    		numStr = num.toString();
+    		var numStr
     		if( num < 10){
+					numStr = num.toString();
     			numStr = "0" + numStr;
     		}
     		return numStr;
@@ -145,6 +146,7 @@ ParkingSpaceSchema = new SimpleSchema({
 		type: Date,
 		label: "Expire At",
 		autoValue: function() {
+
 			current = new Date();
 			console.log(current);
 			hour = this.field('time.hour').value;
@@ -153,7 +155,11 @@ ParkingSpaceSchema = new SimpleSchema({
 				hour = hour + 12;
 			}
 			min = this.field('time.minute').value;
+			if(!min){
+				return
+			}
 			date =  new Date(current.getFullYear(), current.getMonth(), current.getDate(), hour, min);
+			console.log(hour);
 			console.log(date);
 			return	date;
 		},

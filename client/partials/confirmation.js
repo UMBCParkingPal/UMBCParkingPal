@@ -38,7 +38,7 @@ Modal.allowMultiple = true
 Template.confirmation.events({
   'click .pay': function(){
     Modal.hide()
-
+    console.log("Hey");
     postID = Session.get("ParkingSpace")._id
 
     console.log(postID);
