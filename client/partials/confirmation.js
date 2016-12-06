@@ -7,13 +7,26 @@ Template.saleFinal.events({
 
     var rating = parseInt($(element).val());
 
+    var userID = null;
+    var buyer = false;
+    if(ParkingSpaces.findOne({buyerID:Meteor.userId()})){
+      userID = ParkingSpaces.findOne({buyerID:Meteor.userId()}).sellerID
+      buyer = true;
+    }
+    else if(ParkingSpaces.findOne({sellerID:Meteor.userId()})){
+      userID = ParkingSpaces.findOne({sellerID:Meteor.userId()}).buyerID
+    }
 
-    var sellerID = ParkingSpaces.findOne({buyerID:Meteor.userId()}).sellerID
+    Meteor.users.update( {_id:userID},{$inc: {'profile.totalRating' : rating}})
+    Meteor.users.update( {_id:userID},{$inc: {'profile.numRatings' : 1}})
 
-    Meteor.users.update( {_id:sellerID},{$inc: {'profile.totalRating' : rating}})
-    Meteor.users.update( {_id:sellerID},{$inc: {'profile.numRatings' : 1}})
-
-    Meteor.call('deleteParkingSpace', ParkingSpaces.findOne({buyerID:Meteor.userId()})._id);
+    if(buyer){
+      Meteor.call('deleteParkingSpace', ParkingSpaces.findOne({buyerID:Meteor.userId()})._id);
+    }
+    else {
+      Meteor.call('deleteParkingSpace', ParkingSpaces.findOne({sellerID:Meteor.userId()})._id);
+    }
+    
 
   }
 })
