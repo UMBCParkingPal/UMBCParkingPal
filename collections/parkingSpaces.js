@@ -32,10 +32,17 @@ ParkingSpaceSchema = new SimpleSchema({
     	autoValue: function () {
     		num = this.field('time.minute').value;
     		var numStr
+				if(!num){
+					return // idk...
+				}
+
     		if( num < 10){
 					numStr = num.toString();
     			numStr = "0" + numStr;
-    		}
+    		} else {
+					numStr = num.toString()
+				}
+				console.log(numStr);
     		return numStr;
     	}
     },
@@ -156,10 +163,11 @@ ParkingSpaceSchema = new SimpleSchema({
 			}
 			min = this.field('time.minute').value;
 			if(!min){
+				console.log("No Minute. Safe Return (happens when buying, weird error)");
 				return
 			}
 			date =  new Date(current.getFullYear(), current.getMonth(), current.getDate(), hour, min);
-			console.log(hour);
+			console.log(min);
 			console.log(date);
 			return	date;
 		},

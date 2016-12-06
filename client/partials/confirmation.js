@@ -23,6 +23,7 @@ Template.confirmation.helpers({
     return Session.get("ParkingSpace")
   },
   canBuySpace: function(){
+    return true
     var thisId = Meteor.userId();
     if (ParkingSpaces.find({sellerID: thisId}).fetch().length == 0 && ParkingSpaces.find({buyerID: thisId}).fetch().length == 0){
       return true
