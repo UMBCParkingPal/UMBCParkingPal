@@ -12,7 +12,10 @@
     </header>
 
     <div class="w3-container">
-      <h3>${{price}}</h3>
+			<h3>
+					Contact Seller: {{sellerPhone}}
+			</h3>
+      <h3>Price: ${{price}}</h3>
     </div>
 
     <footer class="w3-container w3-blue">
@@ -21,8 +24,9 @@
 
 				<button type="button" class="confirm btn" data-dismiss="modal" style="background-color: #B3B6B7;" >Confirm Exchange
           </button>
-					
+					{{#if isMySpace}}
           <h5 style="text-align: center;">Your spot was purchased!</h5>
+					{{/if}}
       {{else}}
         <h5 style="text-align: center;">Spot available</h5>
 			{{/if}}

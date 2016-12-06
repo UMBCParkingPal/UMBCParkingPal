@@ -1,0 +1,16 @@
+db.parkingSpaces.insert({
+  buyerID: "",
+  createdAt: new Date(),
+  desc: "All the way in the corner facing poplar ave",
+  isBought: false,
+  lotNum: 12,
+  price: 3,
+  sellerID: "bbqwert1",
+  time: {
+    ampm: "PM",
+    hour: 4,
+    minute: 25,
+    minuteStr: "25"
+    },
+  usersName: "Billy Bob"
+})

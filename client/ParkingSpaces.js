@@ -143,10 +143,14 @@ Template.MyParkingSpace.helpers({
   isSold:()=>{
     console.log(Template.instance().data.isBought);
     return Template.instance().data.isBought;
+  },
+  sellerPhone:()=>{
+    sellerID = Template.instance().sellerID
+    return Meteor.users.findOne({"sellerID" : sellerID}).profile.phonenumber
+  },
+  isMySpace: ()=> {
+    return Template.instance().data.sellerID == Meteor.user().profile.sellerID
   }
-  // isMySpace: ()=> {
-  //   return Template.instance().data.sellerID ==
-  // }
 })
 
 Template.MyParkingSpace.events({

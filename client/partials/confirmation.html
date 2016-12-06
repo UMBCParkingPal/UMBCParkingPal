@@ -27,13 +27,13 @@
                     <footer class="w3-container w3-blue">
                       <h5>{{leavingTime}}</h5>
                       <br>
-                      {{usersName}}
+                      {{time.hour}}:{{time.minuteStr}} {{time.ampm}}
                     </footer>
                   </div>
                 </div>
                   </article>
                 </div>                </div>
-                  
+
 
                 <div class="modal-footer">
                     <input type="image" width="150px" src="paypalButton.png" name="pay" id="pay" class="pay"/>
@@ -52,6 +52,6 @@
         </div>
     </div>
     {{/with}}
-    
+
 
 </template>
