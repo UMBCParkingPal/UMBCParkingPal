@@ -1,9 +1,11 @@
 <template name="confirmation">
+
+
   {{#with ParkingSpaceInfo}}
     <div class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-
+                {{#if canBuySpace}}
                 <div class="modal-header">
                     <h4 class="modal-title">Purchase Confirmation</h4>
                 </div>
@@ -31,14 +33,25 @@
                 </div>
                   </article>
                 </div>                </div>
+                  
 
                 <div class="modal-footer">
                     <input type="image" width="150px" src="paypalButton.png" name="pay" id="pay" class="pay"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
+                {{else}}
+                  <div class="modal-body">
+                    <h4>You cannot buy a spot while you have an active listing or purchase</h4>
+                  </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                {{/if}}
 
             </div>
         </div>
     </div>
     {{/with}}
+    
+
 </template>

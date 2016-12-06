@@ -21,7 +21,16 @@ Template.saleFinal.events({
 Template.confirmation.helpers({
   ParkingSpaceInfo: function(){
     return Session.get("ParkingSpace")
+  },
+  canBuySpace: function(){
+    var thisId = Meteor.userId();
+    if (ParkingSpaces.find({sellerID: thisId}).fetch().length == 0 && ParkingSpaces.find({buyerID: thisId}).fetch().length == 0){
+      return true
+    }
+    return false
   }
+
+
 })
 
 Modal.allowMultiple = true

@@ -5,7 +5,7 @@ Meteor.subscribe('parkingSpaces');
 Template.SellParkingSpace.helpers({
   'canSellSpace': ()=>{
     var thisId = Meteor.userId();
-    if (ParkingSpaces.find({sellerID: thisId}).fetch().length == 0){
+    if (ParkingSpaces.find({sellerID: thisId}).fetch().length == 0 && ParkingSpaces.find({buyerID: thisId}).fetch().length == 0){
       return true
     }
     return false
