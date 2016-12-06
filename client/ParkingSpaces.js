@@ -143,6 +143,49 @@ Template.MyParkingSpace.helpers({
   isSold:()=>{
     console.log(Template.instance().data.isBought);
     return Template.instance().data.isBought;
+  },
+  isSeller: function() {
+    var user = Meteor.userId();
+    var seller = Template.instance().data.sellerID;
+    if(!seller){
+      return false;
+    }
+    if( user == seller){
+      return true;
+    }else {
+      return false;
+    }
+  },
+  isBuyer: function() {
+    var user = Meteor.userId();
+    var buyer = Template.instance().data.buyerID;
+    if(!buyer){
+      return false;
+    }
+    if( user == buyer){
+      return true;
+    }else {
+      return false;
+    }
+  },
+  buyerMake: function() {
+    var buyer = Template.instance().data.buyerID;
+    console.log(buyer);
+    var student = Meteor.users.findOne({"_id" : buyer});
+    if(!student){
+      return "no info";
+    }
+    
+    return student.profile.make;
+  },
+  sellerMake: function() {
+    var seller = Template.instance().data.sellerID;
+    var student = Meteor.users.findOne({seller});
+    if(!student){
+      return "no info";
+    }
+    return student.profile.make;
+
   }
   // isMySpace: ()=> {
   //   return Template.instance().data.sellerID ==

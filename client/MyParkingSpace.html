@@ -12,21 +12,56 @@
     </header>
 
     <div class="w3-container">
-      <h3>${{price}}</h3>
+      <div style="float: left;"><h3>{{time.hour}}:{{time.minuteStr}} {{time.ampm}}</h3></div>
+      <div style="float:right;"><h3>${{price}}</h3></div>
     </div>
-
-    <footer class="w3-container w3-blue">
+<!--
+    <div class="w3-container w3-blue">
       <h3>{{time.hour}}:{{time.minuteStr}} {{time.ampm}}</h3>
-			{{#if isSold}}
+    </div>-->
 
-				<button type="button" class="confirm btn" data-dismiss="modal" style="background-color: #B3B6B7;" >Confirm Exchange
-          </button>
-					
-          <h5 style="text-align: center;">Your spot was purchased!</h5>
+			{{#if isSold}}
+        <div class="w3-container w3-blue">
+          <h5 style="text-align: center;">Spot purchased!</h5>
+          <button type="button" class="confirm btn" data-dismiss="modal" style="background-color: #B3B6B7; margin-bottom: 10px;" >Confirm Exchange
+            </button>
+        </div>
+          <!--
+          <div width="80px" height="100px" style="float: center; border-style: solid;border-color: white;" margin= "10px">
+          -->
+
+          <div class="w3-container">
+
+            {{#if isSeller}}
+              <h4>Buyer Car Info:</h4>
+              <ul>
+                <li>Make: {{buyerMake}}</li>
+                <li>Model: </li>
+                <li>Color: </li>
+                <li>License Plate: </li>
+              </ul>
+            {{/if}}
+
+            {{#if isBuyer}}
+              <h4>Seller Car Info:</h4>
+              <ul>
+                <li>Make: </li>
+                <li>Model: </li>
+                <li>Color: </li>
+                <li>License Plate: </li>
+              </ul>
+            {{/if}}
+        
+  				
+        </div>
+        
+
       {{else}}
-        <h5 style="text-align: center;">Spot available</h5>
+        <div class="w3-container w3-blue">
+          <h5 style="text-align: center;">Spot listed</h5>
+        </div>
 			{{/if}}
-    </footer>
+    
   </div>
 </div>
   </article>
