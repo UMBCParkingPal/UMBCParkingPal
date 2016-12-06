@@ -1,10 +1,8 @@
 <template name="MyParkingSpaces">
-{{#with MyParkingSpacesList}}
-		{{#each MyParkingSpacesList}}
+{{#each MyParkingSpacesList}}
 			<center>{{>MyParkingSpace}}</center>
-		{{/each}}
 {{else}}
-		You have no active listings or purchases.
-{{/with}}
+		<div style="margin-right:50%">You have no active listings or purchases.</div>
+{{/each}}
 
 </template>

@@ -67,14 +67,14 @@
 </div>
 </div>
 <br/>
-{{#with FilteredParkingSpaces}}
-	{{#each FilteredParkingSpaces}}
+
+{{#each FilteredParkingSpaces}}
 	    {{>ParkingSpace}}
-	{{/each}}
+	
 {{else}}
 	No parking spaces match your selections.
 
-{{/with}}
+{{/each}}
 <br><br>
 
 </template>
