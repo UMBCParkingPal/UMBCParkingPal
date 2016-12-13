@@ -14,3 +14,11 @@ db.parkingSpaces.insert({
     },
   usersName: "Billy Bob"
 })
+
+
+
+
+db.ParkingSpaces.update({
+  {usersName: "Constantin Koehler"},
+  {$set: {isBought: true}}
+})

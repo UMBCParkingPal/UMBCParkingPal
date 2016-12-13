@@ -1,3 +1,8 @@
+/*
+This file defines the schema used to collect information about students that are on the site
+All it's attributes are descibed here
+*/
+
 Students = new Mongo.Collection('students');
 
 Students.allow({

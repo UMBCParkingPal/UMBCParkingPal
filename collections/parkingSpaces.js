@@ -1,3 +1,8 @@
+/*
+This file defines the schema used to collect information about parking Spaces that are sold
+All it's attributes are descibed here
+*/
+
 ParkingSpaces = new Mongo.Collection('parkingSpaces');
 
 ParkingSpaceSchema = new SimpleSchema({
@@ -30,10 +35,11 @@ ParkingSpaceSchema = new SimpleSchema({
     		type: "hidden"
     	},
     	autoValue: function () {
+				//normalize input
     		num = this.field('time.minute').value;
     		var numStr
 				if(!num){
-					return // idk...
+					return //exit gracefully
 				}
 
     		if( num < 10){
@@ -150,6 +156,7 @@ ParkingSpaceSchema = new SimpleSchema({
 		}
 	},
 	expireAt: {
+		//delete listing after time interval
 		type: Date,
 		label: "Expire At",
 		autoValue: function() {

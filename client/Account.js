@@ -1,7 +1,7 @@
 Meteor.subscribe('parkingSpaces');
 
 
-
+//performs a check if user can sell a space
 Template.SellParkingSpace.helpers({
   'canSellSpace': ()=>{
     var thisId = Meteor.userId();
@@ -12,6 +12,7 @@ Template.SellParkingSpace.helpers({
   }
 })
 
+// handles user registration
 Template.Register.events({
   'submit form': function(){
     event.preventDefault();
@@ -46,6 +47,7 @@ Template.Register.events({
   }
 })
 
+//helper functions to get user information
 Template.Register.helpers({
   email: ()=>{
    var user = Meteor.user();
@@ -54,6 +56,7 @@ Template.Register.helpers({
    }
  }
 })
+//helper functions to get user information
 
 Template.Account.helpers({
    email: ()=>{
@@ -99,13 +102,14 @@ Template.Account.helpers({
     }
   },
   rating: ()=>{
+    //calculate rating score
     var rating = Meteor.user().profile.totalRating
     var numRatings = Meteor.user().profile.numRatings
 
     if(numRatings == 0){
       return "No Ratings"
     }
-    
+
     var average = rating/numRatings
 
     if(numRatings == 1){
@@ -114,7 +118,7 @@ Template.Account.helpers({
     return average.toFixed(2) + "/5 ("+ numRatings +" ratings)"
   }
 });
-
+//submit account form
 Template.Account.events({
   'submit form': function(){
     event.preventDefault();

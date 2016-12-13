@@ -4,25 +4,24 @@ Modal.allowMultiple = true
 
 Session.set('LotFlag',false)
 Session.set('PriceFlag',false)
-
+//redirect after listing a parkingSpace
 AutoForm.addHooks(['insertParkingSpaceForm'], {
   onSuccess: function(operation, result, template) {
     FlowRouter.go("/");
 		Modal.show('sellConfirmation')
   }
 });
-
+//show modal after confirming sale
 Template.MyParkingSpace.events({
   'click .confirm': function(){
     Modal.hide()
-    console.log("Yo");
     Modal.show('saleFinal', function (){
       console.log(this);
       return this
     })
   }
 })
-
+//show user's personal listings
 Template.MyParkingSpaces.helpers({
 	MyParkingSpacesList: ()=> {
 		var thisId = Meteor.userId();
@@ -38,7 +37,7 @@ Template.MyParkingSpaces.helpers({
 		};
 	}
 })
-
+//buy confirmation modal popup
 Template.Buy.events({
   'click .buy': function(){
     Session.set('ParkingSpace',this)
@@ -47,7 +46,7 @@ Template.Buy.events({
     })
   }
 })
-
+//define critea for sorting
 Template.Buy.helpers({
 	FilteredParkingSpaces: ()=>{
     console.log(Session.get('PriceFilter'));
@@ -76,7 +75,7 @@ Template.Buy.helpers({
     }
   }
 })
-
+//define events for filtering
 Template.Buy.events({
 	'change #lot': function(event){
     var input = $(event.target).val()
@@ -101,21 +100,22 @@ Template.Buy.events({
 Template.ParkingSpace.onCreated(function(){
 	this.editMode = new ReactiveVar(false);
 });
-
+//sellParking event
 Template.SellParkingSpace.events({
 	'click .fa-close': function() {
 		Session.set('SellParkingSpace', false);
 	}
 });
 
-
+// see if user is allowed to delete post
+// just checks user id but in future will check admin priv
 Template.ParkingSpace.helpers({
 	canDelete: function(){
 		return this.usersName == Meteor.user().profile.name
 	}
 });
 
-
+//getUserRating functionality
 Template.ParkingSpace.helpers({
   getUserRating:()=> {
 
@@ -136,7 +136,7 @@ Template.ParkingSpace.helpers({
   }
 })
 
-
+//check if listing is sold and get information about buyer/seller
 Template.MyParkingSpace.helpers({
   isSold:()=>{
     console.log(Template.instance().data.isBought);
@@ -174,7 +174,7 @@ Template.MyParkingSpace.helpers({
     if(!student){
       return "no info";
     }
-    
+
     return student.profile.make;
   },
   buyerPhone: ()=>{
@@ -190,7 +190,7 @@ Template.MyParkingSpace.helpers({
     }
     return student.profile.make;
   },
-  
+
   sellerPhone:()=>{
     sellerID = Template.instance().sellerID
     return Meteor.users.findOne({"sellerID" : sellerID}).profile.phonenumber;
@@ -200,10 +200,11 @@ Template.MyParkingSpace.helpers({
 
   }
 })
-
+//get events if user does something
 Template.MyParkingSpace.events({
 	'click .delete': function () {
     toDelete = Template.instance().data._id
+    //ask confirmation
     new Confirmation({
       title: "Confirmation",
       cancelText: "Cancel",
@@ -217,7 +218,5 @@ Template.MyParkingSpace.events({
         ParkingSpaces.remove(this._id);
       }
     });
-    // Meteor.call('deleteParkingSpace', this._id);
-    //ParkingSpaces.remove(this._id);
   },
 });

@@ -1,6 +1,6 @@
 Meteor.subscribe('parkingSpaces');
 
-
+//rating functionality
 Template.saleFinal.events({
   'click .rate': function(event,template){
     var element = template.find('input:radio[name=rating]:checked');
@@ -26,11 +26,12 @@ Template.saleFinal.events({
     else {
       Meteor.call('deleteParkingSpace', ParkingSpaces.findOne({sellerID:Meteor.userId()})._id);
     }
-    
+
 
   }
 })
 
+//parking confirmation checks
 Template.confirmation.helpers({
   ParkingSpaceInfo: function(){
     return Session.get("ParkingSpace")
@@ -42,12 +43,11 @@ Template.confirmation.helpers({
     }
     return false
   }
-
-
 })
 
 Modal.allowMultiple = true
 
+//handle confirmation events
 Template.confirmation.events({
   'click .pay': function(){
     Modal.hide()
